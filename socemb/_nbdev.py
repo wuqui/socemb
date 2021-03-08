@@ -8,12 +8,12 @@ index = {"get_fpaths": "03_read_data.ipynb",
          "rm_bots_subreddits": "04_clean_data.ipynb",
          "rm_dupl_comments": "04_clean_data.ipynb",
          "rm_comm_no_toks": "04_clean_data.ipynb",
-         "get_monthly_freq": "05_usage_intensity.ipynb",
-         "plot_use_freq": "05_usage_intensity.ipynb"}
+         "get_monthly_freq": "05_usage_freq.ipynb",
+         "plot_use_freq": "05_usage_freq.ipynb"}
 
 modules = ["read_data.py",
            "clean_data.py",
-           "usage_intensity.py"]
+           "usage_freq.py"]
 
 doc_url = "https://wuqui.github.io/socemb/"
 

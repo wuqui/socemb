@@ -26,7 +26,7 @@ entries:
       url: clean_data.html
     - output: web,pdf
       title: Usage intensity
-      url: usage_intensity.html
+      url: usage_freq.html
     output: web
     title: socemb
   output: web

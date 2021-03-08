@@ -6,6 +6,6 @@
     "Collecting the data": "collect-data.html",
     "Reading the data": "read_data.html",
     "Clean data": "clean_data.html",
-    "Usage intensity": "usage_intensity.html"
+    "Usage intensity": "usage_freq.html"
   }
 }
