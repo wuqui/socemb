@@ -1,35 +1,3 @@
-# SocEmb
-> Social embeddings of lexical innovations.
-
-
-This file will become your README and also the index of your documentation.
-
-## Install
-
-`pip install your_project_name`
-
-## How to use
-
-Fill me in please! Don't forget code examples:
-
-```python
-1+1
-```
-
-
-
-
-    2
-
-
-
-```python
-say_hello('Quirin')
-```
-
-
-
-
-    'Hello Quirin!'
-
+# Social embeddings of lexical innovation
+> Social embeddings of lexical innovation on Reddit.
 
