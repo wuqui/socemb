@@ -10,8 +10,23 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
-      url: core.html
+      title: Processing
+      url: processing.html
+    - output: web,pdf
+      title: Installation
+      url: installation.html
+    - output: web,pdf
+      title: Collecting the data
+      url: collect-data.html
+    - output: web,pdf
+      title: Reading the data
+      url: read_data.html
+    - output: web,pdf
+      title: Clean data
+      url: clean_data.html
+    - output: web,pdf
+      title: Usage intensity
+      url: usage_intensity.html
     output: web
     title: socemb
   output: web

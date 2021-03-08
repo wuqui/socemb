@@ -1,6 +1,11 @@
 {
   "socemb": {
     "Overview": "/",
-    "module name here": "core.html"
+    "Processing": "processing.html",
+    "Installation": "installation.html",
+    "Collecting the data": "collect-data.html",
+    "Reading the data": "read_data.html",
+    "Clean data": "clean_data.html",
+    "Usage intensity": "usage_intensity.html"
   }
 }
