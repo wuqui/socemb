@@ -27,6 +27,9 @@ entries:
     - output: web,pdf
       title: Usage intensity
       url: usage_freq.html
+    - output: web,pdf
+      title: Embeddings
+      url: embeddings.html
     output: web
     title: socemb
   output: web
