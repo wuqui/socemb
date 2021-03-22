@@ -2,8 +2,8 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "complete-mailman",
+   "execution_count": 1,
+   "id": "hybrid-reflection",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -13,8 +13,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "recreational-knock",
+   "execution_count": 123,
+   "id": "macro-donna",
    "metadata": {},
    "outputs": [
     {
@@ -34,25 +34,32 @@
   },
   {
    "cell_type": "markdown",
-   "id": "objective-think",
-   "metadata": {},
+   "id": "emotional-portfolio",
+   "metadata": {
+    "heading_collapsed": "true",
+    "tags": []
+   },
    "source": [
-    "# Embeddings"
+    "# Token embeddings"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "radical-graduation",
-   "metadata": {},
+   "id": "sharing-shareware",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "## Imports"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "sublime-royal",
-   "metadata": {},
+   "execution_count": 124,
+   "id": "killing-northwest",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "from flair.data import Sentence"
@@ -60,9 +67,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "speaking-database",
-   "metadata": {},
+   "execution_count": 125,
+   "id": "falling-essence",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "from flair.embeddings import WordEmbeddings"
@@ -70,8 +79,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "greenhouse-medline",
+   "execution_count": 126,
+   "id": "assured-rebound",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -80,8 +89,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "rational-argument",
+   "execution_count": 127,
+   "id": "seven-organization",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -90,16 +99,18 @@
   },
   {
    "cell_type": "markdown",
-   "id": "planned-station",
-   "metadata": {},
+   "id": "separate-phoenix",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "### Load language model"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "confirmed-banana",
+   "execution_count": 128,
+   "id": "insured-vegetation",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -108,7 +119,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "oriental-crawford",
+   "id": "valid-tennis",
    "metadata": {},
    "source": [
     "## Pre-processing"
@@ -116,8 +127,10 @@
   },
   {
    "cell_type": "markdown",
-   "id": "peaceful-vegetation",
-   "metadata": {},
+   "id": "middle-foundation",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "### Class-less version"
    ]
@@ -125,7 +138,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "combined-individual",
+   "id": "optical-netscape",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -135,7 +148,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "joint-cornwall",
+   "id": "saving-china",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -149,10 +162,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "solved-affairs",
+   "id": "approved-oliver",
    "metadata": {},
    "outputs": [],
    "source": [
+    "# export\n",
     "def proc_sentence(sent_string):\n",
     "    sent = Sentence(sent_string)\n",
     "    return sent"
@@ -161,7 +175,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "alternate-muslim",
+   "id": "silver-sucking",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -172,7 +186,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "civilian-diesel",
+   "id": "hazardous-riverside",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -182,8 +196,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "generic-modem",
-   "metadata": {},
+   "id": "amino-international",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "for tok in sent:\n",
@@ -193,7 +209,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "liberal-cycle",
+   "id": "colored-serbia",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -205,7 +221,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "affiliated-wholesale",
+   "id": "interracial-beach",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -215,8 +231,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "acute-tuning",
-   "metadata": {},
+   "id": "supported-third",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "for tok in sent_emb:\n",
@@ -226,7 +244,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "honey-clearing",
+   "id": "arctic-munich",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -236,7 +254,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "alien-agenda",
+   "id": "british-collective",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -246,7 +264,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "processed-showcase",
+   "id": "sixth-affiliate",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -261,7 +279,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "available-payday",
+   "id": "general-modern",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -274,7 +292,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "understanding-coordination",
+   "id": "weekly-collective",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -284,7 +302,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "universal-cement",
+   "id": "appointed-brave",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -298,7 +316,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "subject-dating",
+   "id": "false-conservative",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -308,7 +326,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "artificial-version",
+   "id": "comic-tutorial",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -321,7 +339,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "satisfied-paste",
+   "id": "expected-vampire",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -332,7 +350,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "restricted-daniel",
+   "id": "banned-barbados",
    "metadata": {},
    "source": [
     "### Class version"
@@ -340,7 +358,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "green-parts",
+   "id": "regulated-helmet",
    "metadata": {},
    "source": [
     "#### Imports"
@@ -348,8 +366,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "excess-burlington",
+   "execution_count": 9,
+   "id": "changed-oklahoma",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -358,7 +376,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "accessible-minnesota",
+   "id": "modified-admission",
    "metadata": {},
    "source": [
     "#### Variables"
@@ -366,8 +384,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "becoming-webcam",
+   "execution_count": 10,
+   "id": "perceived-virus",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -376,8 +394,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "stuck-herald",
+   "execution_count": 45,
+   "id": "acknowledged-elevation",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -390,8 +408,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "confirmed-museum",
+   "execution_count": 46,
+   "id": "pending-garbage",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -400,16 +418,18 @@
   },
   {
    "cell_type": "markdown",
-   "id": "danish-jewelry",
-   "metadata": {},
+   "id": "welcome-dover",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "#### Initialize `Sent` class"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "quiet-neighborhood",
+   "execution_count": 12,
+   "id": "polish-canon",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -421,8 +441,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "christian-delhi",
+   "execution_count": 47,
+   "id": "congressional-circular",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -431,8 +451,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "israeli-vacation",
+   "execution_count": 48,
+   "id": "flying-jordan",
    "metadata": {},
    "outputs": [
     {
@@ -441,7 +461,7 @@
        "'He found money at the bank.'"
       ]
      },
-     "execution_count": null,
+     "execution_count": 48,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -452,16 +472,18 @@
   },
   {
    "cell_type": "markdown",
-   "id": "virgin-beaver",
-   "metadata": {},
+   "id": "cheap-infection",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "#### Tokenize sentence"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "characteristic-composer",
+   "execution_count": 49,
+   "id": "special-pavilion",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -472,9 +494,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "exciting-collect",
-   "metadata": {},
+   "execution_count": 52,
+   "id": "noted-indian",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -497,8 +521,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "painted-encounter",
+   "execution_count": 53,
+   "id": "unlimited-waste",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -507,7 +531,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "amber-department",
+   "id": "tribal-small",
    "metadata": {},
    "source": [
     "#### Embed sentence"
@@ -515,8 +539,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "minimal-slide",
+   "execution_count": 54,
+   "id": "different-magazine",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -529,8 +553,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "israeli-roman",
+   "execution_count": 118,
+   "id": "complimentary-entertainment",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -539,8 +563,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "cellular-memory",
+   "execution_count": 119,
+   "id": "reasonable-setup",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -549,8 +573,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "filled-majority",
+   "execution_count": 57,
+   "id": "committed-morgan",
    "metadata": {},
    "outputs": [
     {
@@ -574,8 +598,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "realistic-sixth",
+   "execution_count": 58,
+   "id": "sought-onion",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -584,8 +608,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "extreme-intellectual",
+   "execution_count": 59,
+   "id": "separated-dominant",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -594,7 +618,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "musical-antenna",
+   "id": "competent-backup",
    "metadata": {},
    "source": [
     "#### Get target tokens"
@@ -602,8 +626,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "pointed-objective",
+   "execution_count": 65,
+   "id": "expected-suggestion",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -617,8 +641,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "deluxe-settlement",
+   "execution_count": 66,
+   "id": "running-professor",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -627,8 +651,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "affiliated-conviction",
+   "execution_count": 67,
+   "id": "ruled-repair",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -637,7 +661,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "dental-breed",
+   "id": "false-highway",
    "metadata": {},
    "source": [
     "#### Tokens"
@@ -645,8 +669,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "promising-collins",
+   "execution_count": 96,
+   "id": "hearing-ability",
    "metadata": {},
    "outputs": [
     {
@@ -655,7 +679,7 @@
        "[Token: 6 bank]"
       ]
      },
-     "execution_count": null,
+     "execution_count": 96,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -666,8 +690,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "scheduled-silver",
+   "execution_count": 98,
+   "id": "reflected-money",
    "metadata": {},
    "outputs": [
     {
@@ -676,7 +700,7 @@
        "'He found money at the bank.'"
       ]
      },
-     "execution_count": null,
+     "execution_count": 98,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -687,8 +711,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "amazing-belle",
+   "execution_count": 111,
+   "id": "sophisticated-interim",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -701,8 +725,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "instrumental-aquatic",
+   "execution_count": 120,
+   "id": "brutal-costume",
    "metadata": {},
    "outputs": [
     {
@@ -725,8 +749,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "religious-attempt",
+   "execution_count": 74,
+   "id": "interim-breast",
    "metadata": {},
    "outputs": [
     {
@@ -744,8 +768,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "union-homeless",
+   "execution_count": 63,
+   "id": "integrated-corner",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -758,8 +782,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "funded-aurora",
+   "execution_count": 64,
+   "id": "fantastic-announcement",
    "metadata": {},
    "outputs": [
     {
@@ -781,7 +805,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "fuzzy-launch",
+   "id": "foreign-madagascar",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -794,7 +818,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "chemical-oxford",
+   "id": "anticipated-timothy",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -805,8 +829,10 @@
   },
   {
    "cell_type": "markdown",
-   "id": "modular-mechanism",
-   "metadata": {},
+   "id": "utility-wagner",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "## Type-based embeddings"
    ]
@@ -814,8 +840,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "optimum-crack",
-   "metadata": {},
+   "id": "damaged-secret",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "embedding = WordEmbeddings('glove')"
@@ -824,7 +852,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "secondary-answer",
+   "id": "pursuant-thousand",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -835,8 +863,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "medical-conference",
-   "metadata": {},
+   "id": "arranged-queen",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "for token in sentence:\n",
@@ -846,16 +876,20 @@
   },
   {
    "cell_type": "markdown",
-   "id": "interracial-ecuador",
-   "metadata": {},
+   "id": "atmospheric-mention",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "## Token-based embeddings"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "tropical-visit",
-   "metadata": {},
+   "id": "passing-living",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "### Toy example: 'bank'"
    ]
@@ -863,7 +897,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "proved-summit",
+   "id": "current-forty",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -873,7 +907,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "amateur-shell",
+   "id": "guilty-twelve",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -883,7 +917,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "editorial-superior",
+   "id": "entitled-conviction",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -893,7 +927,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "commercial-judges",
+   "id": "theoretical-patch",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -903,7 +937,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "efficient-review",
+   "id": "tough-sheffield",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -913,8 +947,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "round-module",
-   "metadata": {},
+   "id": "breeding-amber",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "print(\n",
@@ -927,8 +963,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "earlier-asthma",
-   "metadata": {},
+   "id": "adequate-delight",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "assert cos(vecs[0], vecs[1]) > cos(vecs[0], vecs[2])\n",
@@ -937,7 +975,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "hawaiian-protection",
+   "id": "smooth-mumbai",
    "metadata": {},
    "source": [
     "### 'Cell'"
@@ -946,7 +984,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "electric-conjunction",
+   "id": "removed-toyota",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -956,7 +994,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "reliable-space",
+   "id": "described-inflation",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -969,7 +1007,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "italian-skating",
+   "id": "ultimate-laser",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -979,7 +1017,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "massive-titanium",
+   "id": "aware-ferry",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -989,7 +1027,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "casual-welcome",
+   "id": "fourth-indonesia",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -999,7 +1037,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "authentic-jacksonville",
+   "id": "thermal-compression",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1010,8 +1048,10 @@
   },
   {
    "cell_type": "markdown",
-   "id": "sonic-updating",
-   "metadata": {},
+   "id": "metropolitan-celebrity",
+   "metadata": {
+    "tags": []
+   },
    "source": [
     "### 'Anglo-Saxon' "
    ]
@@ -1019,8 +1059,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "optical-footwear",
-   "metadata": {},
+   "id": "prompt-softball",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "from flair.data import Sentence"
@@ -1029,7 +1071,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "center-monroe",
+   "id": "substantial-massachusetts",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1039,7 +1081,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "mathematical-syracuse",
+   "id": "underlying-parks",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1049,7 +1091,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "persistent-lounge",
+   "id": "entire-landscape",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1059,7 +1101,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "specific-romance",
+   "id": "sought-incident",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1069,7 +1111,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "proved-ethnic",
+   "id": "described-substance",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1079,7 +1121,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "prime-texas",
+   "id": "certified-simon",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1094,7 +1136,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "geographic-aspect",
+   "id": "exterior-closure",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1104,7 +1146,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "broke-adjustment",
+   "id": "basic-heater",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1114,7 +1156,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "worst-rwanda",
+   "id": "worth-teens",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1127,7 +1169,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "treated-event",
+   "id": "beneficial-chamber",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1141,7 +1183,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "deluxe-correction",
+   "id": "centered-optimum",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1151,7 +1193,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "instrumental-residence",
+   "id": "interstate-rescue",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1168,7 +1210,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "chinese-poison",
+   "id": "royal-hostel",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1178,7 +1220,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "anonymous-breath",
+   "id": "treated-orange",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1188,7 +1230,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "norwegian-horse",
+   "id": "unauthorized-place",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1201,7 +1243,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "referenced-simple",
+   "id": "ranking-yemen",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1211,7 +1253,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "mental-training",
+   "id": "recent-uncle",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1228,7 +1270,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "external-chaos",
+   "id": "consolidated-superintendent",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1238,7 +1280,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "tired-signal",
+   "id": "sudden-classics",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1256,7 +1298,20 @@
    "display_name": "Python 3",
    "language": "python",
    "name": "python3"
-  }
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  },
+  "toc-autonumbering": true
  },
  "nbformat": 4,
  "nbformat_minor": 5
