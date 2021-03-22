@@ -29,7 +29,7 @@ entries:
       url: usage_freq.html
     - output: web,pdf
       title: Embeddings
-      url: embeddings.html
+      url: token_emb.html
     output: web
     title: socemb
   output: web

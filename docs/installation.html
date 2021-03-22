@@ -28,7 +28,48 @@ nb_path: "01_installation.ipynb"
 
 </div>
     {% endraw %}
-import sys%conda update --yes pip%conda install -c conda-forge ipywidgets%conda install -c conda-forge --yes numpy%conda install -c conda-forge --yes pandas%conda install -c conda-forge --yes altair vega_datasets altair_saver%pip install psaw%conda install -c conda-forge tqdm%pip install flair%conda install -c conda-forge pytorch torchvision torchaudio -c pytorch
+import sys%conda update --yes pip%conda install -c conda-forge ipywidgets%conda install -c conda-forge --yes numpy%conda install -c conda-forge --yes pandas%conda install -c conda-forge --yes altair vega_datasets altair_saver
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pip</span> install psaw
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting psaw
+  Using cached psaw-0.1.0-py3-none-any.whl (15 kB)
+Requirement already satisfied: requests in /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages (from psaw) (2.25.1)
+Requirement already satisfied: Click in /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages (from psaw) (7.1.2)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages (from requests-&gt;psaw) (2.10)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages (from requests-&gt;psaw) (1.26.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages (from requests-&gt;psaw) (2020.12.5)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages (from requests-&gt;psaw) (4.0.0)
+Installing collected packages: psaw
+Successfully installed psaw-0.1.0
+Note: you may need to restart the kernel to use updated packages.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+%conda install -c conda-forge tqdm%pip install flair%conda install -c conda-forge pytorch torchvision torchaudio -c pytorch
 </div>
  
 

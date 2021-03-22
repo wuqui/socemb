@@ -46,6 +46,7 @@ nb_path: "02_collect-data.ipynb"
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 
     </div>
@@ -61,6 +62,23 @@ nb_path: "02_collect-data.ipynb"
 </div>
 </div>
 </div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LEX</span> <span class="o">=</span> <span class="s1">&#39;follow&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Get-comments">Get comments<a class="anchor-link" href="#Get-comments"> </a></h2>
@@ -83,8 +101,8 @@ nb_path: "02_collect-data.ipynb"
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">PushshiftAPI</span><span class="p">()</span>
 
 <span class="n">gen</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">search_comments</span><span class="p">(</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;Anglo-Saxon&#39;</span>
-    <span class="c1"># after = int(dt.datetime(2007, 7, 22).timestamp()),</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">LEX</span>
+    <span class="c1"># after = int(dt.datetime(2020, 3, 1).timestamp()),</span>
     <span class="c1"># before = int(dt.datetime(2020, 3, 27).timestamp())</span>
 <span class="p">)</span>
 </pre></div>
@@ -98,7 +116,7 @@ nb_path: "02_collect-data.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="collect-results">collect results<a class="anchor-link" href="#collect-results"> </a></h3>
+<h3 id="Collect-results">Collect results<a class="anchor-link" href="#Collect-results"> </a></h3>
 </div>
 </div>
 </div>
@@ -111,7 +129,7 @@ nb_path: "02_collect-data.ipynb"
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">max_response_cache</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">max_response_cache</span> <span class="o">=</span> <span class="mi">100000</span>
 <span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">max_response_cache</span><span class="p">):</span>
@@ -127,26 +145,67 @@ nb_path: "02_collect-data.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>  0%|          | 0/100000 [00:00&lt;?, ?it/s]</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+2021-03-09 09:52:36.563858
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>  1%|          | 701/100000 [00:40&lt;52:38, 31.44it/s]  /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:192: UserWarning: Got non 200 code 522
+  warnings.warn(&#34;Got non 200 code %s&#34; % response.status_code)
+/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:180: UserWarning: Unable to connect to pushshift.io. Retrying after backoff.
+  warnings.warn(&#34;Unable to connect to pushshift.io. Retrying after backoff.&#34;)
+  2%|▏         | 2201/100000 [02:12&lt;1:14:05, 22.00it/s]/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:192: UserWarning: Got non 200 code 525
+  warnings.warn(&#34;Got non 200 code %s&#34; % response.status_code)
+100%|█████████▉| 99999/100000 [1:04:31&lt;00:00, 25.83it/s]</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+2021-03-09 10:57:08.036048
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convert-to-DF">Convert to DF<a class="anchor-link" href="#Convert-to-DF"> </a></h3>
 </div>
 </div>
-
 </div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -163,6 +222,31 @@ nb_path: "02_collect-data.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 725 ms, sys: 105 ms, total: 830 ms
+Wall time: 834 ms
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>100000</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -173,7 +257,84 @@ nb_path: "02_collect-data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 100000 entries, 0 to 99999
+Data columns (total 40 columns):
+ #   Column                           Non-Null Count   Dtype  
+---  ------                           --------------   -----  
+ 0   all_awardings                    100000 non-null  object 
+ 1   associated_award                 0 non-null       object 
+ 2   author                           100000 non-null  object 
+ 3   author_flair_background_color    12045 non-null   object 
+ 4   author_flair_css_class           6785 non-null    object 
+ 5   author_flair_richtext            99948 non-null   object 
+ 6   author_flair_template_id         12884 non-null   object 
+ 7   author_flair_text                15747 non-null   object 
+ 8   author_flair_text_color          16793 non-null   object 
+ 9   author_flair_type                99948 non-null   object 
+ 10  author_fullname                  99948 non-null   object 
+ 11  author_patreon_flair             99948 non-null   object 
+ 12  author_premium                   99948 non-null   object 
+ 13  awarders                         100000 non-null  object 
+ 14  body                             100000 non-null  object 
+ 15  collapsed_because_crowd_control  0 non-null       object 
+ 16  comment_type                     0 non-null       object 
+ 17  created_utc                      100000 non-null  int64  
+ 18  distinguished                    33625 non-null   object 
+ 19  gildings                         100000 non-null  object 
+ 20  id                               100000 non-null  object 
+ 21  is_submitter                     100000 non-null  bool   
+ 22  link_id                          100000 non-null  object 
+ 23  locked                           100000 non-null  bool   
+ 24  no_follow                        100000 non-null  bool   
+ 25  parent_id                        100000 non-null  object 
+ 26  permalink                        100000 non-null  object 
+ 27  retrieved_on                     100000 non-null  int64  
+ 28  score                            100000 non-null  int64  
+ 29  send_replies                     100000 non-null  bool   
+ 30  stickied                         100000 non-null  bool   
+ 31  subreddit                        100000 non-null  object 
+ 32  subreddit_id                     100000 non-null  object 
+ 33  top_awarded_type                 0 non-null       object 
+ 34  total_awards_received            100000 non-null  int64  
+ 35  treatment_tags                   100000 non-null  object 
+ 36  created                          100000 non-null  float64
+ 37  author_cakeday                   208 non-null     object 
+ 38  media_metadata                   6 non-null       object 
+ 39  editable                         1 non-null       object 
+dtypes: bool(5), float64(1), int64(4), object(30)
+memory usage: 27.2+ MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;~/Desktop/follow.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
