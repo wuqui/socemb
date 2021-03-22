@@ -61,6 +61,530 @@ nb_path: "07_type_emb.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">socemb.read_data</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fpaths</span> <span class="o">=</span> <span class="n">get_fpaths</span><span class="p">(</span><span class="s1">&#39;Anglo-Saxon&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">read_comments</span><span class="p">(</span><span class="n">fpaths</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">docs</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">docs</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs</span> <span class="o">=</span> <span class="n">docs</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;current&#39;,
+ &#39;playthrough....&#39;,
+ &#39;no&#39;,
+ &#39;cheat&#39;,
+ &#39;ironman&#39;,
+ &#39;playing&#39;,
+ &#39;three&#39;,
+ &#39;duchy&#39;,
+ &#39;king&#39;,
+ &#39;(iceland,&#39;,
+ &#39;orkney&#39;,
+ &#39;&amp;amp;&#39;,
+ &#39;vestlandet).&#39;,
+ &#39;i&#39;,
+ &#39;converted&#39;,
+ &#39;to&#39;,
+ &#39;christianity&#39;,
+ &#39;pretty&#39;,
+ &#39;early&#39;,
+ &#39;(an&#39;,
+ &#39;early&#39;,
+ &#39;holy&#39;,
+ &#39;war&#39;,
+ &#39;that&#39;,
+ &#39;turned&#39;,
+ &#39;saxony&#39;,
+ &#39;into&#39;,
+ &#39;christians&#39;,
+ &#39;really&#39;,
+ &#39;saved&#39;,
+ &#39;me&#39;,
+ &#39;here)&#39;,
+ &#39;and&#39;,
+ &#39;was&#39;,
+ &#39;able&#39;,
+ &#39;to&#39;,
+ &#39;stay&#39;,
+ &#39;holy&#39;,
+ &#39;wars&#39;,
+ &#39;with&#39;,
+ &#39;all&#39;,
+ &#39;my&#39;,
+ &#39;neighbors.&#39;,
+ &#39;which&#39;,
+ &#39;was&#39;,
+ &#39;good&#39;,
+ &#39;that&#39;,
+ &#39;i&#39;,
+ &#39;kept&#39;,
+ &#39;a&#39;,
+ &#39;raised&#39;,
+ &#39;raiding&#39;,
+ &#39;army&#39;,
+ &#39;around&#39;,
+ &#39;for&#39;,
+ &#39;a&#39;,
+ &#39;while&#39;,
+ &#39;after&#39;,
+ &#39;to&#39;,
+ &#39;converted&#39;,
+ &#39;to&#39;,
+ &#39;feudalism.&#39;,
+ &#39;i&#39;,
+ &#39;turned&#39;,
+ &#39;the&#39;,
+ &#39;duchy&#39;,
+ &#39;of&#39;,
+ &#39;iceland&#39;,
+ &#39;into&#39;,
+ &#39;a&#39;,
+ &#39;merchant&#39;,
+ &#39;republic&#39;,
+ &#39;and&#39;,
+ &#39;that&#39;,
+ &#39;relationship&#39;,
+ &#39;has&#39;,
+ &#39;been&#39;,
+ &#39;spotty&#39;,
+ &#39;at&#39;,
+ &#39;best.&#39;,
+ &#39;but&#39;,
+ &#39;the&#39;,
+ &#39;real&#39;,
+ &#39;fun&#39;,
+ &#39;is&#39;,
+ &#39;fucking&#39;,
+ &#39;with&#39;,
+ &#39;my&#39;,
+ &#39;neighbors.&#39;,
+ &#39;i&#39;,
+ &#39;had&#39;,
+ &#39;a&#39;,
+ &#39;character&#39;,
+ &#39;with&#39;,
+ &#39;really&#39;,
+ &#39;high&#39;,
+ &#39;intrigue&#39;,
+ &#39;and&#39;,
+ &#39;diplomacy&#39;,
+ &#39;but&#39;,
+ &#39;shit&#39;,
+ &#39;for&#39;,
+ &#39;martial.&#39;,
+ &#39;i&#39;,
+ &#39;was&#39;,
+ &#39;in&#39;,
+ &#39;a&#39;,
+ &#39;bad&#39;,
+ &#39;spot&#39;,
+ &#39;as&#39;,
+ &#39;iceland&#39;,
+ &#39;wanted&#39;,
+ &#39;independence&#39;,
+ &#39;and&#39;,
+ &#39;their&#39;,
+ &#39;faction&#39;,
+ &#39;was&#39;,
+ &#39;pretty&#39;,
+ &#39;strong&#39;,
+ &#39;so&#39;,
+ &#39;i&#39;,
+ &#34;didn&#39;t&#34;,
+ &#39;want&#39;,
+ &#39;to&#39;,
+ &#39;risk&#39;,
+ &#39;losing&#39;,
+ &#39;my&#39;,
+ &#39;levies&#39;,
+ &#39;to&#39;,
+ &#39;push&#39;,
+ &#39;them&#39;,
+ &#39;over,&#39;,
+ &#39;but&#39;,
+ &#39;i&#39;,
+ &#39;still&#39;,
+ &#39;wanted&#39;,
+ &#39;to&#39;,
+ &#39;take&#39;,
+ &#39;my&#39;,
+ &#39;neighboring&#39;,
+ &#39;pagan&#39;,
+ &#39;rulers&#39;,
+ &#39;down&#39;,
+ &#39;a&#39;,
+ &#39;peg.&#39;,
+ &#39;so&#39;,
+ &#39;i&#39;,
+ &#39;was&#39;,
+ &#39;able&#39;,
+ &#39;to&#39;,
+ &#39;kill&#39;,
+ &#39;off&#39;,
+ &#39;about&#39;,
+ &#39;20&#39;,
+ &#39;holders&#39;,
+ &#39;of&#39;,
+ &#39;nidaros.&#39;,
+ &#39;i&#39;,
+ &#39;was&#39;,
+ &#39;hoping&#39;,
+ &#39;to&#39;,
+ &#39;fine&#39;,
+ &#39;a&#39;,
+ &#39;successor&#39;,
+ &#39;with&#39;,
+ &#39;terrible&#39;,
+ &#39;stats&#39;,
+ &#39;so&#39;,
+ &#39;they&#39;,
+ &#39;would&#39;,
+ &#39;get&#39;,
+ &#39;caught&#39;,
+ &#39;in&#39;,
+ &#39;local&#39;,
+ &#39;subjection&#39;,
+ &#39;wars&#39;,
+ &#39;to&#39;,
+ &#39;keep&#39;,
+ &#39;busy&#39;,
+ &#39;but&#39;,
+ &#39;fuck,&#39;,
+ &#39;they&#39;,
+ &#39;had&#39;,
+ &#39;some&#39;,
+ &#39;serious&#39;,
+ &#39;bench&#39;,
+ &#39;strength.&#39;,
+ &#39;even&#39;,
+ &#39;the&#39;,
+ &#39;little&#39;,
+ &#39;girls&#39;,
+ &#39;had&#39;,
+ &#39;9+&#39;,
+ &#39;at&#39;,
+ &#39;times.&#39;,
+ &#39;eventually&#39;,
+ &#39;after&#39;,
+ &#39;the&#39;,
+ &#39;sixth&#39;,
+ &#39;or&#39;,
+ &#39;seventh&#39;,
+ &#39;assassination&#39;,
+ &#39;i&#39;,
+ &#39;got&#39;,
+ &#39;caught&#39;,
+ &#39;and&#39;,
+ &#39;got&#39;,
+ &#39;the&#39;,
+ &#39;dreaded&#39;,
+ &#39;&#34;known&#39;,
+ &#39;murder&#34;&#39;,
+ &#39;label.&#39;,
+ &#39;all&#39;,
+ &#39;in&#39;,
+ &#39;all&#39;,
+ &#39;it&#39;,
+ &#39;was&#39;,
+ &#39;worth&#39;,
+ &#39;it.&#39;,
+ &#39;the&#39;,
+ &#39;kingdom&#39;,
+ &#39;of&#39;,
+ &#39;vestlandet&#39;,
+ &#39;is&#39;,
+ &#39;still&#39;,
+ &#39;alive&#39;,
+ &#39;and&#39;,
+ &#39;kicking.&#39;,
+ &#39;i&#39;,
+ &#39;even&#39;,
+ &#39;accidentally&#39;,
+ &#39;inherited&#39;,
+ &#39;the&#39;,
+ &#39;duchy&#39;,
+ &#39;of&#39;,
+ &#39;north&#39;,
+ &#39;lorraine&#39;,
+ &#39;(not&#39;,
+ &#39;sure&#39;,
+ &#39;how)&#39;,
+ &#39;and&#39;,
+ &#39;nobody&#39;,
+ &#39;seems&#39;,
+ &#39;to&#39;,
+ &#39;be&#39;,
+ &#39;fucking&#39;,
+ &#39;with&#39;,
+ &#39;it.&#39;,
+ &#39;i&#39;,
+ &#39;keep&#39;,
+ &#39;marrying&#39;,
+ &#39;into&#39;,
+ &#39;saxon&#39;,
+ &#39;lines&#39;,
+ &#39;and&#39;,
+ &#39;about&#39;,
+ &#39;to&#39;,
+ &#39;jump&#39;,
+ &#39;ship&#39;,
+ &#39;and&#39;,
+ &#39;start&#39;,
+ &#39;marrying&#39;,
+ &#39;into&#39;,
+ &#39;french.&#39;,
+ &#39;though&#39;,
+ &#39;also&#39;,
+ &#39;considering&#39;,
+ &#39;(norse)&#39;,
+ &#39;irish&#39;,
+ &#39;alliances&#39;,
+ &#39;as&#39;,
+ &#39;they&#39;,
+ &#39;just&#39;,
+ &#39;united&#39;,
+ &#39;and&#39;,
+ &#39;conquered&#39;,
+ &#39;the&#39;,
+ &#39;scots&#39;,
+ &#39;and&#39;,
+ &#39;are&#39;,
+ &#39;pushing&#39;,
+ &#39;south.&#39;,
+ &#34;it&#39;s&#34;,
+ &#39;around&#39;,
+ &#39;1200&#39;,
+ &#39;right&#39;,
+ &#39;now&#39;,
+ &#39;and&#39;,
+ &#39;the&#39;,
+ &#39;anglo-saxon&#39;,
+ &#39;english&#39;,
+ &#39;king&#39;,
+ &#39;is&#39;,
+ &#39;a&#39;,
+ &#39;heretic&#39;,
+ &#39;so&#39;,
+ &#39;they&#39;,
+ &#39;keep&#39;,
+ &#39;pushing&#39;,
+ &#39;into&#39;,
+ &#39;english&#39;,
+ &#39;duchies.&#39;,
+ &#39;i&#39;,
+ &#39;started&#39;,
+ &#39;this&#39;,
+ &#39;playthrough&#39;,
+ &#39;by&#39;,
+ &#39;saying&#39;,
+ &#39;that&#39;,
+ &#39;i&#39;,
+ &#39;would&#39;,
+ &#39;offer&#39;,
+ &#39;allegiance&#39;,
+ &#39;to&#39;,
+ &#39;whichever&#39;,
+ &#39;neighboring&#39;,
+ &#39;empire&#39;,
+ &#39;that&#39;,
+ &#39;formed&#39;,
+ &#39;first.&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>138928</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sents</span> <span class="o">=</span><span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span> <span class="s1">&#39;playing&#39;</span><span class="p">,</span> <span class="s1">&#39;basketball&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;tennis&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;You&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span> <span class="s1">&#39;reading&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;writing&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -69,7 +593,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Corpus" class="doc_header"><code>class</code> <code>Corpus</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L6" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Corpus</code>()</p>
+<h2 id="Corpus" class="doc_header"><code>class</code> <code>Corpus</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L6" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Corpus</code>(<strong><code>docs</code></strong>)</p>
 </blockquote>
 <p>An iterator that yields sentences (lists of str).</p>
 
@@ -97,7 +621,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sents</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -120,13 +644,13 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span>
-    <span class="n">sents</span><span class="p">,</span> 
-    <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">size</span><span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span>
+    <span class="n">corpus</span><span class="p">,</span> 
+    <span class="n">min_count</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
     <span class="n">workers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
-    <span class="n">window</span> <span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
-    <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">window</span><span class="o">=</span><span class="mi">3</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -199,15 +723,16 @@ nb_path: "07_type_emb.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>word #0/9 is like
-word #1/9 is and
-word #2/9 is I
-word #3/9 is playing
-word #4/9 is basketball
-word #5/9 is tennis
-word #6/9 is You
-word #7/9 is reading
-word #8/9 is writing
+<pre>word #0/625086 is the
+word #1/625086 is of
+word #2/625086 is and
+word #3/625086 is to
+word #4/625086 is a
+word #5/625086 is in
+word #6/625086 is is
+word #7/625086 is that
+word #8/625086 is i
+word #9/625086 is as
 </pre>
 </div>
 </div>
@@ -240,7 +765,7 @@ word #8/9 is writing
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.24733709</pre>
+<pre>0.87182456</pre>
 </div>
 
 </div>
@@ -258,7 +783,7 @@ word #8/9 is writing
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="s1">&#39;basketball&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="s1">&#39;basketball&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -273,7 +798,7 @@ word #8/9 is writing
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-0.17399852</pre>
+<pre>0.5944799</pre>
 </div>
 
 </div>
@@ -306,14 +831,16 @@ word #8/9 is writing
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[(&#39;tennis&#39;, 0.24733713269233704),
- (&#39;writing&#39;, 0.09569855779409409),
- (&#39;reading&#39;, 0.013453084975481033),
- (&#39;playing&#39;, -0.029057681560516357),
- (&#39;You&#39;, -0.07019157707691193),
- (&#39;I&#39;, -0.17399850487709045),
- (&#39;and&#39;, -0.2035938799381256),
- (&#39;like&#39;, -0.29376399517059326)]</pre>
+<pre>[(&#39;baseball&#39;, 0.9226516485214233),
+ (&#39;hockey&#39;, 0.8914705514907837),
+ (&#39;soccer&#39;, 0.890144407749176),
+ (&#39;chess&#39;, 0.8887145519256592),
+ (&#39;golf&#39;, 0.8880098462104797),
+ (&#39;cricket&#39;, 0.8862640261650085),
+ (&#39;billionaire&#39;, 0.8857084512710571),
+ (&#39;manager&#39;, 0.8841858506202698),
+ (&#39;baltimore&#39;, 0.8819049596786499),
+ (&#39;team&#39;, 0.8810849189758301)]</pre>
 </div>
 
 </div>

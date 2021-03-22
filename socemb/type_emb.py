@@ -5,11 +5,8 @@ __all__ = ['Corpus']
 # Cell
 class Corpus:
     """An iterator that yields sentences (lists of str)."""
-
+    def __init__(self, docs):
+        self.docs = docs
     def __iter__(self):
-        sents =[
-            ['I', 'like', 'playing', 'basketball', 'and', 'tennis'],
-            ['You', 'like', 'reading', 'and', 'writing']
-        ]
-        for sent in sents:
-            yield sent
+        for doc in docs:
+            yield doc
