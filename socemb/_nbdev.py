@@ -10,11 +10,13 @@ index = {"get_fpaths": "03_read_data.ipynb",
          "rm_comm_no_toks": "04_clean_data.ipynb",
          "get_monthly_freq": "05_usage_freq.ipynb",
          "plot_use_freq": "05_usage_freq.ipynb",
+         "proc_sentence": "06_token_emb.ipynb",
          "Corpus": "07_type_emb.ipynb"}
 
 modules = ["read_data.py",
            "clean_data.py",
            "usage_freq.py",
+           "token_emb.py",
            "type_emb.py"]
 
 doc_url = "https://wuqui.github.io/socemb/"

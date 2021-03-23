@@ -28,6 +28,9 @@ entries:
       title: Usage intensity
       url: usage_freq.html
     - output: web,pdf
+      title: Token embeddings
+      url: token_emb.html
+    - output: web,pdf
       title: Type embeddings
       url: type_emb.html
     output: web
