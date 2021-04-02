@@ -2,8 +2,17 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"get_fpaths": "03_read_data.ipynb",
-         "read_comments": "03_read_data.ipynb",
+index = {"query_lexeme": "02_collect-data.ipynb",
+         "query_subr": "02_collect-data.ipynb",
+         "get_results": "02_collect-data.ipynb",
+         "conv_results_to_df": "02_collect-data.ipynb",
+         "comm_subr_to_csv": "02_collect-data.ipynb",
+         "get_subr_year": "02_collect-data.ipynb",
+         "get_fpaths_lex": "03_read_data.ipynb",
+         "get_fpath_subr_yr": "03_read_data.ipynb",
+         "get_fpaths_subr_yrs": "03_read_data.ipynb",
+         "read_comm_csv": "03_read_data.ipynb",
+         "concat_comment_csvs": "03_read_data.ipynb",
          "parse_dates": "03_read_data.ipynb",
          "rm_bots_subreddits": "04_clean_data.ipynb",
          "rm_dupl_comments": "04_clean_data.ipynb",
@@ -13,7 +22,8 @@ index = {"get_fpaths": "03_read_data.ipynb",
          "proc_sentence": "06_token_emb.ipynb",
          "Corpus": "07_type_emb.ipynb"}
 
-modules = ["read_data.py",
+modules = ["collect_data.py",
+           "read_data.py",
            "clean_data.py",
            "usage_freq.py",
            "token_emb.py",

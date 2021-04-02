@@ -38,30 +38,53 @@ nb_path: "02_collect-data.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">psaw</span> <span class="kn">import</span> <span class="n">PushshiftAPI</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Variables">Variables<a class="anchor-link" href="#Variables"> </a></h2>
+<h2 id="Run-query">Run query<a class="anchor-link" href="#Run-query"> </a></h2>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Lexeme-based">Lexeme-based<a class="anchor-link" href="#Lexeme-based"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="query_lexeme" class="doc_header"><code>query_lexeme</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_lexeme</code>(<strong><code>lex</code></strong>, <strong><code>year</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -69,76 +92,8 @@ nb_path: "02_collect-data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LEX</span> <span class="o">=</span> <span class="s1">&#39;follow&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Get-comments">Get comments<a class="anchor-link" href="#Get-comments"> </a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Run-query">Run query<a class="anchor-link" href="#Run-query"> </a></h3>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">PushshiftAPI</span><span class="p">()</span>
-
-<span class="n">gen</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">search_comments</span><span class="p">(</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">LEX</span>
-    <span class="c1"># after = int(dt.datetime(2020, 3, 1).timestamp()),</span>
-    <span class="c1"># before = int(dt.datetime(2020, 3, 27).timestamp())</span>
-<span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Collect-results">Collect results<a class="anchor-link" href="#Collect-results"> </a></h3>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">max_response_cache</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">max_response_cache</span><span class="p">):</span>
-    <span class="n">cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_response_cache</span><span class="p">:</span>
-        <span class="k">break</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen</span> <span class="o">=</span> <span class="n">query_lexeme</span><span class="p">(</span><span class="s1">&#39;Anglo-Saxon&#39;</span><span class="p">,</span> <span class="mi">2006</span><span class="p">)</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -147,99 +102,43 @@ nb_path: "02_collect-data.ipynb"
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>  0%|          | 0/100000 [00:00&lt;?, ?it/s]</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-2021-03-09 09:52:36.563858
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>  1%|          | 701/100000 [00:40&lt;52:38, 31.44it/s]  /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:192: UserWarning: Got non 200 code 522
-  warnings.warn(&#34;Got non 200 code %s&#34; % response.status_code)
-/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:180: UserWarning: Unable to connect to pushshift.io. Retrying after backoff.
-  warnings.warn(&#34;Unable to connect to pushshift.io. Retrying after backoff.&#34;)
-  2%|▏         | 2201/100000 [02:12&lt;1:14:05, 22.00it/s]/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:192: UserWarning: Got non 200 code 525
-  warnings.warn(&#34;Got non 200 code %s&#34; % response.status_code)
-100%|█████████▉| 99999/100000 [1:04:31&lt;00:00, 25.83it/s]</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-2021-03-09 10:57:08.036048
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convert-to-DF">Convert to DF<a class="anchor-link" href="#Convert-to-DF"> </a></h3>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">thing</span><span class="o">.</span><span class="n">d_</span> <span class="k">for</span> <span class="n">thing</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">])</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 725 ms, sys: 105 ms, total: 830 ms
-Wall time: 834 ms
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>100000</pre>
+<pre>comment(author=&#39;Jean-Naimard&#39;, author_created_utc=1163570322, author_flair_css_class=None, author_flair_text=None, author_fullname=&#39;t2_qx69&#39;, body=&#39;Western canadians have always been, are and will always be utterly clueless as to the nature of Québec.\r\n\r\nHaving toiled for centuries to suppress anything that’s french, the western rednecks have always shown their utter dedication to the most basest, vile, stupid, primitive human instincts possible.\r\n\r\nWhat the west really want is to join their moronic brethen south-of-the-border and become the 51st State, so they can have &#34;less&#34; taxes, the &#34;right&#34; to carry guns, and generally be clueless ignorant rednecks, as they always have been.\r\n\r\nThere is no &#34;western&#34; nation. It’s the same anglo-saxon soup that you will find in Ontario, the Maritimes or in the US. It’s just the seasoning that changes; some cod sprinkled here, some Screech there, some crumpets here, and some angus beef there. They’re just pissed-off that they have so meager demographic weight that they cannot influence things as much as Ontario and Québec who have the highest population in Canada.\r\n\r\nYeah, I’m a separatist frog who worships Charles de Gaulle.&#39;, controversiality=0, created_utc=1164736253, distinguished=None, gilded=0, id=&#39;csse5&#39;, link_id=&#39;t3_sprl&#39;, nest_level=3, parent_id=&#39;t1_csqwh&#39;, reply_delay=22280, retrieved_on=1473807187, score=-5, stickied=False, subreddit=&#39;reddit.com&#39;, subreddit_id=&#39;t5_6&#39;, created=1164729053.0, d_={&#39;author&#39;: &#39;Jean-Naimard&#39;, &#39;author_created_utc&#39;: 1163570322, &#39;author_flair_css_class&#39;: None, &#39;author_flair_text&#39;: None, &#39;author_fullname&#39;: &#39;t2_qx69&#39;, &#39;body&#39;: &#39;Western canadians have always been, are and will always be utterly clueless as to the nature of Québec.\r\n\r\nHaving toiled for centuries to suppress anything that’s french, the western rednecks have always shown their utter dedication to the most basest, vile, stupid, primitive human instincts possible.\r\n\r\nWhat the west really want is to join their moronic brethen south-of-the-border and become the 51st State, so they can have &#34;less&#34; taxes, the &#34;right&#34; to carry guns, and generally be clueless ignorant rednecks, as they always have been.\r\n\r\nThere is no &#34;western&#34; nation. It’s the same anglo-saxon soup that you will find in Ontario, the Maritimes or in the US. It’s just the seasoning that changes; some cod sprinkled here, some Screech there, some crumpets here, and some angus beef there. They’re just pissed-off that they have so meager demographic weight that they cannot influence things as much as Ontario and Québec who have the highest population in Canada.\r\n\r\nYeah, I’m a separatist frog who worships Charles de Gaulle.&#39;, &#39;controversiality&#39;: 0, &#39;created_utc&#39;: 1164736253, &#39;distinguished&#39;: None, &#39;gilded&#39;: 0, &#39;id&#39;: &#39;csse5&#39;, &#39;link_id&#39;: &#39;t3_sprl&#39;, &#39;nest_level&#39;: 3, &#39;parent_id&#39;: &#39;t1_csqwh&#39;, &#39;reply_delay&#39;: 22280, &#39;retrieved_on&#39;: 1473807187, &#39;score&#39;: -5, &#39;stickied&#39;: False, &#39;subreddit&#39;: &#39;reddit.com&#39;, &#39;subreddit_id&#39;: &#39;t5_6&#39;, &#39;created&#39;: 1164729053.0})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Subreddit-based">Subreddit-based<a class="anchor-link" href="#Subreddit-based"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="query_subr" class="doc_header"><code>query_subr</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_subr</code>(<strong><code>subreddit</code></strong>, <strong><code>year</code></strong>)</p>
+</blockquote>
+
 </div>
 
 </div>
@@ -253,11 +152,19 @@ Wall time: 834 ms
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query_gen</span> <span class="o">=</span> <span class="n">query_subr</span><span class="p">(</span><span class="s1">&#39;politics&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">)</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -269,54 +176,78 @@ Wall time: 834 ms
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 100000 entries, 0 to 99999
-Data columns (total 40 columns):
- #   Column                           Non-Null Count   Dtype  
----  ------                           --------------   -----  
- 0   all_awardings                    100000 non-null  object 
- 1   associated_award                 0 non-null       object 
- 2   author                           100000 non-null  object 
- 3   author_flair_background_color    12045 non-null   object 
- 4   author_flair_css_class           6785 non-null    object 
- 5   author_flair_richtext            99948 non-null   object 
- 6   author_flair_template_id         12884 non-null   object 
- 7   author_flair_text                15747 non-null   object 
- 8   author_flair_text_color          16793 non-null   object 
- 9   author_flair_type                99948 non-null   object 
- 10  author_fullname                  99948 non-null   object 
- 11  author_patreon_flair             99948 non-null   object 
- 12  author_premium                   99948 non-null   object 
- 13  awarders                         100000 non-null  object 
- 14  body                             100000 non-null  object 
- 15  collapsed_because_crowd_control  0 non-null       object 
- 16  comment_type                     0 non-null       object 
- 17  created_utc                      100000 non-null  int64  
- 18  distinguished                    33625 non-null   object 
- 19  gildings                         100000 non-null  object 
- 20  id                               100000 non-null  object 
- 21  is_submitter                     100000 non-null  bool   
- 22  link_id                          100000 non-null  object 
- 23  locked                           100000 non-null  bool   
- 24  no_follow                        100000 non-null  bool   
- 25  parent_id                        100000 non-null  object 
- 26  permalink                        100000 non-null  object 
- 27  retrieved_on                     100000 non-null  int64  
- 28  score                            100000 non-null  int64  
- 29  send_replies                     100000 non-null  bool   
- 30  stickied                         100000 non-null  bool   
- 31  subreddit                        100000 non-null  object 
- 32  subreddit_id                     100000 non-null  object 
- 33  top_awarded_type                 0 non-null       object 
- 34  total_awards_received            100000 non-null  int64  
- 35  treatment_tags                   100000 non-null  object 
- 36  created                          100000 non-null  float64
- 37  author_cakeday                   208 non-null     object 
- 38  media_metadata                   6 non-null       object 
- 39  editable                         1 non-null       object 
-dtypes: bool(5), float64(1), int64(4), object(30)
-memory usage: 27.2+ MB
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>comment(author=&#39;ooouuuurrrriiiii&#39;, author_created_utc=1164155492, author_flair_css_class=None, author_flair_text=None, author_fullname=&#39;t2_rxtz&#39;, body=&#34;It&#39;s also in Britain, so it&#39;s an Anglo-Saxon thing it seems.&#34;, controversiality=0, created_utc=1164383206, distinguished=None, gilded=0, id=&#39;csacq&#39;, link_id=&#39;t3_s818&#39;, nest_level=5, parent_id=&#39;t1_cs9id&#39;, reply_delay=20955, retrieved_on=1473806750, score=3, stickied=False, subreddit=&#39;reddit.com&#39;, subreddit_id=&#39;t5_6&#39;, created=1164376006.0, d_={&#39;author&#39;: &#39;ooouuuurrrriiiii&#39;, &#39;author_created_utc&#39;: 1164155492, &#39;author_flair_css_class&#39;: None, &#39;author_flair_text&#39;: None, &#39;author_fullname&#39;: &#39;t2_rxtz&#39;, &#39;body&#39;: &#34;It&#39;s also in Britain, so it&#39;s an Anglo-Saxon thing it seems.&#34;, &#39;controversiality&#39;: 0, &#39;created_utc&#39;: 1164383206, &#39;distinguished&#39;: None, &#39;gilded&#39;: 0, &#39;id&#39;: &#39;csacq&#39;, &#39;link_id&#39;: &#39;t3_s818&#39;, &#39;nest_level&#39;: 5, &#39;parent_id&#39;: &#39;t1_cs9id&#39;, &#39;reply_delay&#39;: 20955, &#39;retrieved_on&#39;: 1473806750, &#39;score&#39;: 3, &#39;stickied&#39;: False, &#39;subreddit&#39;: &#39;reddit.com&#39;, &#39;subreddit_id&#39;: &#39;t5_6&#39;, &#39;created&#39;: 1164376006.0})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Collect-results">Collect results<a class="anchor-link" href="#Collect-results"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_results" class="doc_header"><code>get_results</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_results</code>(<strong><code>gen</code></strong>, <strong><code>limit</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">get_results</span><span class="p">(</span><span class="n">query_gen</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre> 99%|█████████▉| 99/100 [00:02&lt;00:00, 48.33it/s]
 </pre>
 </div>
 </div>
@@ -334,7 +265,7 @@ memory usage: 27.2+ MB
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;~/Desktop/follow.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
 </pre></div>
 
     </div>
@@ -344,6 +275,243 @@ memory usage: 27.2+ MB
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Convert-to-DF">Convert to DF<a class="anchor-link" href="#Convert-to-DF"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="conv_results_to_df" class="doc_header"><code>conv_results_to_df</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L43" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_results_to_df</code>(<strong><code>results</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">conv_results_to_df</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">comments</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0                                               SUP BRO
+1     You should have given the blog dude a piece of...
+2     I DONT THINK THERE IS A STONG CLAN PRESENCE IN...
+3     The problem is that the absurd is not preventi...
+4                                             [deleted]
+                            ...                        
+95    The same person who published this story is ke...
+96    I don&#39;t think that&#39;s really true, personally. ...
+97    You also wouldn&#39;t be concerned if they were dr...
+98    There are other social news websites besides r...
+99    &amp;gt; I wouldn&#39;t be surprised if Ron Paul takes...
+Name: body, Length: 100, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Write-out-comments">Write out comments<a class="anchor-link" href="#Write-out-comments"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="comm_subr_to_csv" class="doc_header"><code>comm_subr_to_csv</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>comm_subr_to_csv</code>(<strong><code>comments</code></strong>, <strong><code>subreddit</code></strong>=<em><code>'NaN'</code></em>, <strong><code>limit</code></strong>=<em><code>'NaN'</code></em>, <strong><code>year</code></strong>=<em><code>'NaN'</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comm_subr_to_csv</span><span class="p">(</span><span class="n">comments</span><span class="p">,</span> <span class="s1">&#39;politics&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Disk-usage">Disk usage<a class="anchor-link" href="#Disk-usage"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th style="text-align:right">n_comments</th>
+<th style="text-align:right">disk_usage_mb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">10000</td>
+<td style="text-align:right">3.5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pipeline-function">Pipeline function<a class="anchor-link" href="#Pipeline-function"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_subr_year" class="doc_header"><code>get_subr_year</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L58" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_subr_year</code>(<strong><code>subreddit</code></strong>, <strong><code>year</code></strong>, <strong><code>limit</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Export-notebooks">Export notebooks<a class="anchor-link" href="#Export-notebooks"> </a></h2>
+</div>
+</div>
+</div>
 </div>
  
 

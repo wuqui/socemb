@@ -52,6 +52,23 @@ nb_path: "07_type_emb.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Variables">Variables<a class="anchor-link" href="#Variables"> </a></h2>
@@ -65,8 +82,8 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LEX</span> <span class="o">=</span> <span class="s1">&#39;woke&#39;</span>
-<span class="n">TIME</span> <span class="o">=</span> <span class="mi">2013</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LEX</span> <span class="o">=</span> <span class="s1">&#39;Anglo-Saxon&#39;</span>
+<span class="n">TIME</span> <span class="o">=</span> <span class="mi">2020</span>
 </pre></div>
 
     </div>
@@ -136,22 +153,9 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/IPython/core/magic.py:187: DtypeWarning: Columns (5,7,10,18) have mixed types.Specify dtype option on import or set low_memory=False.
-  call = lambda f, *a, **k: f(*a, **k)
-/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/IPython/core/magic.py:187: DtypeWarning: Columns (5,7,10,17) have mixed types.Specify dtype option on import or set low_memory=False.
-  call = lambda f, *a, **k: f(*a, **k)
-/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/IPython/core/magic.py:187: DtypeWarning: Columns (4,5,7,14) have mixed types.Specify dtype option on import or set low_memory=False.
-  call = lambda f, *a, **k: f(*a, **k)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 34.9 s, sys: 3.46 s, total: 38.4 s
-Wall time: 41.7 s
+<pre>CPU times: user 1.29 s, sys: 117 ms, total: 1.4 s
+Wall time: 1.42 s
 </pre>
 </div>
 </div>
@@ -168,23 +172,12 @@ Wall time: 41.7 s
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Split-in-temporal-bins">Split in temporal bins<a class="anchor-link" href="#Split-in-temporal-bins"> </a></h3>
 </div>
 </div>
-
 </div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -212,7 +205,134 @@ Wall time: 41.7 s
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2020.0    37744
+2019.0    20995
+2018.0    17447
+2017.0    15157
+2016.0    12187
+2015.0    11190
+2014.0     9022
+2013.0     6667
+2012.0     4446
+2011.0     2073
+2010.0     1122
+2009.0      529
+2008.0      245
+2007.0       82
+2006.0       19
+Name: date, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="p">[</span><span class="n">comments</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">TIME</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Split-by-communities">Split by communities<a class="anchor-link" href="#Split-by-communities"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span>\
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="s1">&#39;subreddit&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>subreddit
+AskReddit                1329
+AskHistorians             919
+HistoryMemes              832
+todayilearned             704
+CrusaderKings             634
+europe                    573
+PoliticalCompassMemes     567
+unpopularopinion          552
+worldnews                 549
+AskEurope                 544
+history                   502
+assassinscreed            485
+ukpolitics                479
+politics                  413
+france                    397
+MapPorn                   380
+heathenry                 342
+tolkienfans               338
+AncestryDNA               325
+TikTokCringe              303
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;subreddit == &quot;politics&quot;&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -229,7 +349,7 @@ Wall time: 41.7 s
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="p">[:</span><span class="mi">50000</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;subreddit == &quot;AskHistorians&quot;&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -311,7 +431,7 @@ Wall time: 41.7 s
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># docs_clean = stem_text()</span>
 <span class="c1">#docs_clean = strip_tags(docs)</span>
-<span class="n">docs_clean</span><span class="o">.</span> <span class="o">=</span> <span class="n">strip_punctuation</span><span class="p">(</span><span class="n">docs_clean</span><span class="p">)</span>
+<span class="n">docs_clean</span> <span class="o">=</span> <span class="n">strip_punctuation</span><span class="p">(</span><span class="n">docs_clean</span><span class="p">)</span>
 <span class="n">docs_clean</span> <span class="o">=</span> <span class="n">strip_multiple_whitespaces</span><span class="p">(</span><span class="n">docs_clean</span><span class="p">)</span>
 <span class="n">docs_clean</span> <span class="o">=</span> <span class="n">strip_numeric</span><span class="p">(</span><span class="n">docs_clean</span><span class="p">)</span>
 <span class="n">docs_clean</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">docs_clean</span><span class="p">)</span>
@@ -409,7 +529,43 @@ Wall time: 41.7 s
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs_clean</span> <span class="o">=</span> <span class="n">docs_clean</span>\
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;anglo-saxon&#39;</span><span class="p">,</span> <span class="s1">&#39;anglosaxon&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;anglo saxon&#39;</span><span class="p">,</span> <span class="s1">&#39;anglosaxon&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs_clean</span> <span class="o">=</span> <span class="n">docs_clean</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[^A-Za-z&#39;]+&quot;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs_clean</span> <span class="o">=</span> <span class="n">docs_clean</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;anglosaxon&#39;</span><span class="p">,</span> <span class="s1">&#39;Anglo-Saxon&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -440,8 +596,8 @@ Wall time: 41.7 s
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 314 ms, sys: 9.82 ms, total: 323 ms
-Wall time: 344 ms
+<pre>CPU times: user 4.29 ms, sys: 45 µs, total: 4.33 ms
+Wall time: 4.34 ms
 </pre>
 </div>
 </div>
@@ -497,18 +653,18 @@ Wall time: 344 ms
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>804845     [woke, up, like, this, flawless, https, media,...
-804846     [my, aunt, had, a, c, section, finally, becaus...
-804847     [i, had, a, dream, like, that, a, week, before...
-804848     [is, the, voice, input, box, ticked, i, use, a...
-804849     [the, effects, of, xyrem, vary, heavily, enoug...
-                                 ...                        
-3262719    [thank, you, all, for, being, so, concerned, a...
-3262720    [something, like, that, sort, of, happened, to...
-3262721    [guys, this, is, actually, legit, today, i, wo...
-3262722    [it, was, more, of, snarky, responses, and, ju...
-3262723    [in, the, future, for, commenters, and, other,...
-Name: body, Length: 49993, dtype: object</pre>
+<pre>64        [i, have, an, idea, how, about, the, republica...
+84        [iirc, they, identified, as, wasps, white, Ang...
+327       [yeah, from, what, i&#39;ve, read, the, main, prob...
+366       [by, the, s, the, american, bar, association, ...
+447       [is, rudi, even, white, he, is, italian, the, ...
+                                ...                        
+138332    [i, don&#39;t, know, where, you, got, that, inform...
+138443    [consider, that, many, countries, like, china,...
+138616    [for, some, people, white, wasp, which, stands...
+138639    [how, funny, same, exact, mindset, as, wasps, ...
+138893    [what, is, it, s, as, simple, as, that, two, p...
+Name: body, Length: 413, dtype: object</pre>
 </div>
 
 </div>
@@ -601,8 +757,8 @@ Name: body, Length: 49993, dtype: object</pre>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 1min, sys: 879 ms, total: 1min
-Wall time: 18.3 s
+<pre>CPU times: user 557 ms, sys: 7.88 ms, total: 564 ms
+Wall time: 337 ms
 </pre>
 </div>
 </div>
@@ -662,7 +818,7 @@ Wall time: 18.3 s
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">index2word</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
         <span class="k">break</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;word #</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">index2word</span><span class="p">)</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">index2word</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -675,16 +831,16 @@ Wall time: 18.3 s
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>word #0/22749 is i
-word #1/22749 is the
-word #2/22749 is and
-word #3/22749 is to
-word #4/22749 is a
-word #5/22749 is was
-word #6/22749 is my
-word #7/22749 is of
-word #8/22749 is in
-word #9/22749 is it
+<pre>0/1356: the
+1/1356: of
+2/1356: and
+3/1356: to
+4/1356: a
+5/1356: in
+6/1356: that
+7/1356: is
+8/1356: it
+9/1356: you
 </pre>
 </div>
 </div>
@@ -702,7 +858,7 @@ word #9/22749 is it
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -717,49 +873,26 @@ word #9/22749 is it
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[(&#39;waking&#39;, 0.7163203358650208),
- (&#39;wake&#39;, 0.6867837905883789),
- (&#39;wakes&#39;, 0.640035092830658),
- (&#39;woken&#39;, 0.601813018321991),
- (&#39;picked&#39;, 0.5780839920043945),
- (&#39;fucked&#39;, 0.5676211714744568),
- (&#39;messed&#39;, 0.541072428226471),
- (&#39;sobered&#39;, 0.5383647084236145),
- (&#39;hooked&#39;, 0.5369008779525757),
- (&#39;showed&#39;, 0.5246539115905762)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="n">LEX</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(300,)</pre>
+<pre>[(&#39;white&#39;, 0.9999111294746399),
+ (&#39;protestants&#39;, 0.9998713731765747),
+ (&#39;men&#39;, 0.9998622536659241),
+ (&#39;only&#39;, 0.9998579025268555),
+ (&#39;were&#39;, 0.9998517036437988),
+ (&#39;wasp&#39;, 0.9998478889465332),
+ (&#39;who&#39;, 0.9998472929000854),
+ (&#39;americans&#39;, 0.9998464584350586),
+ (&#39;people&#39;, 0.9998452663421631),
+ (&#39;so&#39;, 0.9998417496681213),
+ (&#39;from&#39;, 0.9998407363891602),
+ (&#39;for&#39;, 0.9998400211334229),
+ (&#39;not&#39;, 0.9998400211334229),
+ (&#34;that&#39;s&#34;, 0.9998394250869751),
+ (&#39;by&#39;, 0.99983811378479),
+ (&#39;all&#39;, 0.9998378753662109),
+ (&#39;power&#39;, 0.9998376369476318),
+ (&#39;being&#39;, 0.9998376369476318),
+ (&#39;are&#39;, 0.9998363256454468),
+ (&#39;man&#39;, 0.999836266040802)]</pre>
 </div>
 
 </div>
@@ -789,12 +922,43 @@ word #9/22749 is it
 
 <div class="output_area">
 
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-30-e931da782091&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>model<span class="ansi-blue-fg">.</span>wv<span class="ansi-blue-fg">.</span>similarity<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;basketball&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;tennis&#39;</span><span class="ansi-blue-fg">)</span>
 
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/gensim/models/keyedvectors.py</span> in <span class="ansi-cyan-fg">similarity</span><span class="ansi-blue-fg">(self, w1, w2)</span>
+<span class="ansi-green-intense-fg ansi-bold">    972</span> 
+<span class="ansi-green-intense-fg ansi-bold">    973</span>         &#34;&#34;&#34;
+<span class="ansi-green-fg">--&gt; 974</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> dot<span class="ansi-blue-fg">(</span>matutils<span class="ansi-blue-fg">.</span>unitvec<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">[</span>w1<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> matutils<span class="ansi-blue-fg">.</span>unitvec<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">[</span>w2<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    975</span> 
+<span class="ansi-green-intense-fg ansi-bold">    976</span>     <span class="ansi-green-fg">def</span> n_similarity<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> ws1<span class="ansi-blue-fg">,</span> ws2<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 
-<div class="output_text output_subarea output_execute_result">
-<pre>0.61944455</pre>
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/gensim/models/keyedvectors.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, entities)</span>
+<span class="ansi-green-intense-fg ansi-bold">    351</span>         <span class="ansi-green-fg">if</span> isinstance<span class="ansi-blue-fg">(</span>entities<span class="ansi-blue-fg">,</span> string_types<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    352</span>             <span class="ansi-red-fg"># allow calls like trained_model[&#39;office&#39;], as a shorthand for trained_model[[&#39;office&#39;]]</span>
+<span class="ansi-green-fg">--&gt; 353</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>get_vector<span class="ansi-blue-fg">(</span>entities<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    354</span> 
+<span class="ansi-green-intense-fg ansi-bold">    355</span>         <span class="ansi-green-fg">return</span> vstack<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>get_vector<span class="ansi-blue-fg">(</span>entity<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> entity <span class="ansi-green-fg">in</span> entities<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/gensim/models/keyedvectors.py</span> in <span class="ansi-cyan-fg">get_vector</span><span class="ansi-blue-fg">(self, word)</span>
+<span class="ansi-green-intense-fg ansi-bold">    469</span> 
+<span class="ansi-green-intense-fg ansi-bold">    470</span>     <span class="ansi-green-fg">def</span> get_vector<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> word<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 471</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>word_vec<span class="ansi-blue-fg">(</span>word<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    472</span> 
+<span class="ansi-green-intense-fg ansi-bold">    473</span>     <span class="ansi-green-fg">def</span> words_closer_than<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> w1<span class="ansi-blue-fg">,</span> w2<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/gensim/models/keyedvectors.py</span> in <span class="ansi-cyan-fg">word_vec</span><span class="ansi-blue-fg">(self, word, use_norm)</span>
+<span class="ansi-green-intense-fg ansi-bold">    466</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">    467</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 468</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> KeyError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;word &#39;%s&#39; not in vocabulary&#34;</span> <span class="ansi-blue-fg">%</span> word<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    469</span> 
+<span class="ansi-green-intense-fg ansi-bold">    470</span>     <span class="ansi-green-fg">def</span> get_vector<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> word<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">KeyError</span>: &#34;word &#39;basketball&#39; not in vocabulary&#34;</pre>
 </div>
-
 </div>
 
 </div>
@@ -825,7 +989,7 @@ word #9/22749 is it
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-0.016407378</pre>
+<pre>-0.02298256</pre>
 </div>
 
 </div>
@@ -844,7 +1008,13 @@ word #9/22749 is it
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Nearest-semantic-neighbours">Nearest semantic neighbours<a class="anchor-link" href="#Nearest-semantic-neighbours"> </a></h3>
+<h3 id="'woke'">'woke'<a class="anchor-link" href="#'woke'"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Nearest-semantic-neighbours">Nearest semantic neighbours<a class="anchor-link" href="#Nearest-semantic-neighbours"> </a></h4>
 </div>
 </div>
 </div>
@@ -867,21 +1037,15 @@ word #9/22749 is it
 
 <div class="output_area">
 
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-31-c4102e440b2e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>model_2012<span class="ansi-blue-fg">.</span>wv<span class="ansi-blue-fg">.</span>most_similar<span class="ansi-blue-fg">(</span>LEX<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">]</span>
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[(&#39;wake&#39;, 0.7249749302864075),
- (&#39;waking&#39;, 0.6852210760116577),
- (&#39;wakes&#39;, 0.6623281240463257),
- (&#39;woken&#39;, 0.6221311092376709),
- (&#39;messed&#39;, 0.5709801912307739),
- (&#39;picked&#39;, 0.5658282041549683),
- (&#39;sobered&#39;, 0.5360423922538757),
- (&#39;hooked&#39;, 0.5333197116851807),
- (&#39;fucked&#39;, 0.5170655250549316),
- (&#39;teared&#39;, 0.511203944683075)]</pre>
+<span class="ansi-red-fg">NameError</span>: name &#39;model_2012&#39; is not defined</pre>
 </div>
-
 </div>
 
 </div>
@@ -976,7 +1140,7 @@ word #9/22749 is it
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Semantic-distances">Semantic distances<a class="anchor-link" href="#Semantic-distances"> </a></h3>
+<h4 id="Semantic-distances">Semantic distances<a class="anchor-link" href="#Semantic-distances"> </a></h4>
 </div>
 </div>
 </div>
@@ -1121,6 +1285,300 @@ word #9/22749 is it
 
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[0.56318325]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="'Anglo-Saxon'">'Anglo-Saxon'<a class="anchor-link" href="#'Anglo-Saxon'"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="diachronic">diachronic<a class="anchor-link" href="#diachronic"> </a></h4>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2015</span> <span class="o">=</span> <span class="n">model</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2015</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#34;&#39;Anglo-Saxon&#39;&#34;, 0.5941123962402344),
+ (&#39;saxon&#39;, 0.5766994953155518),
+ (&#39;anglo&#39;, 0.565537691116333),
+ (&#39;nordic&#39;, 0.5133814811706543),
+ (&#39;scandinavian&#39;, 0.5125651359558105),
+ (&#39;Anglo-Saxons&#39;, 0.5094699263572693),
+ (&#39;christian&#39;, 0.4999629557132721),
+ (&#39;celtic&#39;, 0.4792066812515259),
+ (&#39;norman&#39;, 0.4619556665420532),
+ (&#39;speaking&#39;, 0.4618777632713318),
+ (&#39;reformation&#39;, 0.45505085587501526),
+ (&#39;english&#39;, 0.44923704862594604),
+ (&#39;briton&#39;, 0.4431315064430237),
+ (&#39;germanic&#39;, 0.44106483459472656),
+ (&#39;oral&#39;, 0.4410490095615387),
+ (&#39;european&#39;, 0.44082000851631165),
+ (&#39;norse&#39;, 0.43608760833740234),
+ (&#39;scottish&#39;, 0.4293793737888336),
+ (&#39;umbrella&#39;, 0.42898502945899963),
+ (&#39;french&#39;, 0.4280967116355896)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2020</span> <span class="o">=</span> <span class="n">model</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2020</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;anglo&#39;, 0.6091771125793457),
+ (&#39;saxon&#39;, 0.5825512409210205),
+ (&#39;scandinavian&#39;, 0.5350757837295532),
+ (&#39;nordic&#39;, 0.5227609872817993),
+ (&#39;norman&#39;, 0.5140793323516846),
+ (&#39;Anglo-Saxons&#39;, 0.5086712837219238),
+ (&#39;celtic&#39;, 0.4723518192768097),
+ (&#39;christian&#39;, 0.4697306156158447),
+ (&#39;germanic&#39;, 0.46731916069984436),
+ (&#39;briton&#39;, 0.45960360765457153),
+ (&#39;english&#39;, 0.455077201128006),
+ (&#39;danish&#39;, 0.4478153884410858),
+ (&#39;specifically&#39;, 0.44695770740509033),
+ (&#39;ethnicity&#39;, 0.4322441816329956),
+ (&#39;slavic&#39;, 0.42445483803749084),
+ (&#39;unknown&#39;, 0.4237750768661499),
+ (&#39;speaking&#39;, 0.4217537045478821),
+ (&#39;norse&#39;, 0.42002302408218384),
+ (&#39;viking&#39;, 0.41853898763656616),
+ (&#39;arab&#39;, 0.41817015409469604)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="social">social<a class="anchor-link" href="#social"> </a></h4>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_politics</span> <span class="o">=</span> <span class="n">model</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_politics</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;white&#39;, 0.9457637071609497),
+ (&#39;appropo&#39;, 0.9342678785324097),
+ (&#39;american&#39;, 0.9291160106658936),
+ (&#39;normalizing&#39;, 0.9231254458427429),
+ (&#39;supremacy&#39;, 0.9224283695220947),
+ (&#39;wasp&#39;, 0.9215584993362427),
+ (&#39;males&#39;, 0.9192890524864197),
+ (&#39;uprising&#39;, 0.9160538911819458),
+ (&#39;christian&#39;, 0.9142899513244629),
+ (&#39;male&#39;, 0.9067474603652954),
+ (&#39;protestant&#39;, 0.906610369682312),
+ (&#39;non&#39;, 0.9024924039840698),
+ (&#39;heterosexual&#39;, 0.9013996124267578),
+ (&#39;supremacist&#39;, 0.8997038006782532),
+ (&#39;protestants&#39;, 0.8967183828353882),
+ (&#39;heritage&#39;, 0.8873857855796814),
+ (&#39;entails&#39;, 0.8841987252235413),
+ (&#39;anglo&#39;, 0.8823980093002319),
+ (&#39;cisgendered&#39;, 0.8809551000595093),
+ (&#39;swamp&#39;, 0.8800334930419922)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_historians</span> <span class="o">=</span> <span class="n">model</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_historians</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;saxon&#39;, 0.6367413997650146),
+ (&#39;medieval&#39;, 0.5913364291191101),
+ (&#34;&#39;Anglo-Saxon&#39;&#34;, 0.5791711211204529),
+ (&#34;thelweard&#39;s&#34;, 0.569437563419342),
+ (&#39;nantes&#39;, 0.5514806509017944),
+ (&#39;peterborough&#39;, 0.5486891269683838),
+ (&#39;norman&#39;, 0.5459719896316528),
+ (&#39;livonian&#39;, 0.5454285144805908),
+ (&#39;scandinavian&#39;, 0.5416566133499146),
+ (&#39;christian&#39;, 0.5314390659332275),
+ (&#39;compilers&#39;, 0.5277916193008423),
+ (&#39;shortcomings&#39;, 0.5209999084472656),
+ (&#34;fantosme&#39;s&#34;, 0.5180712938308716),
+ (&#39;tumble&#39;, 0.5163730382919312),
+ (&#39;anglo&#39;, 0.5038136839866638),
+ (&#39;throes&#39;, 0.4838976263999939),
+ (&#39;metrical&#39;, 0.48360365629196167),
+ (&#39;germanic&#39;, 0.4821174144744873),
+ (&#39;mediaeval&#39;, 0.48090994358062744),
+ (&#39;primarily&#39;, 0.47648146748542786)]</pre>
 </div>
 
 </div>
