@@ -31,6 +31,29 @@ nb_path: "02_collect-data.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Variables">Variables<a class="anchor-link" href="#Variables"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SUBREDDIT</span> <span class="o">=</span> <span class="s1">&#39;politics&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Imports">Imports<a class="anchor-link" href="#Imports"> </a></h2>
 </div>
 </div>
@@ -65,7 +88,7 @@ nb_path: "02_collect-data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_lexeme" class="doc_header"><code>query_lexeme</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_lexeme</code>(<strong><code>lex</code></strong>, <strong><code>year</code></strong>)</p>
+<h4 id="query_lexeme" class="doc_header"><code>query_lexeme</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_lexeme</code>(<strong><code>lex</code></strong>, <strong><code>year</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -100,22 +123,6 @@ nb_path: "02_collect-data.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>comment(author=&#39;Jean-Naimard&#39;, author_created_utc=1163570322, author_flair_css_class=None, author_flair_text=None, author_fullname=&#39;t2_qx69&#39;, body=&#39;Western canadians have always been, are and will always be utterly clueless as to the nature of Québec.\r\n\r\nHaving toiled for centuries to suppress anything that’s french, the western rednecks have always shown their utter dedication to the most basest, vile, stupid, primitive human instincts possible.\r\n\r\nWhat the west really want is to join their moronic brethen south-of-the-border and become the 51st State, so they can have &#34;less&#34; taxes, the &#34;right&#34; to carry guns, and generally be clueless ignorant rednecks, as they always have been.\r\n\r\nThere is no &#34;western&#34; nation. It’s the same anglo-saxon soup that you will find in Ontario, the Maritimes or in the US. It’s just the seasoning that changes; some cod sprinkled here, some Screech there, some crumpets here, and some angus beef there. They’re just pissed-off that they have so meager demographic weight that they cannot influence things as much as Ontario and Québec who have the highest population in Canada.\r\n\r\nYeah, I’m a separatist frog who worships Charles de Gaulle.&#39;, controversiality=0, created_utc=1164736253, distinguished=None, gilded=0, id=&#39;csse5&#39;, link_id=&#39;t3_sprl&#39;, nest_level=3, parent_id=&#39;t1_csqwh&#39;, reply_delay=22280, retrieved_on=1473807187, score=-5, stickied=False, subreddit=&#39;reddit.com&#39;, subreddit_id=&#39;t5_6&#39;, created=1164729053.0, d_={&#39;author&#39;: &#39;Jean-Naimard&#39;, &#39;author_created_utc&#39;: 1163570322, &#39;author_flair_css_class&#39;: None, &#39;author_flair_text&#39;: None, &#39;author_fullname&#39;: &#39;t2_qx69&#39;, &#39;body&#39;: &#39;Western canadians have always been, are and will always be utterly clueless as to the nature of Québec.\r\n\r\nHaving toiled for centuries to suppress anything that’s french, the western rednecks have always shown their utter dedication to the most basest, vile, stupid, primitive human instincts possible.\r\n\r\nWhat the west really want is to join their moronic brethen south-of-the-border and become the 51st State, so they can have &#34;less&#34; taxes, the &#34;right&#34; to carry guns, and generally be clueless ignorant rednecks, as they always have been.\r\n\r\nThere is no &#34;western&#34; nation. It’s the same anglo-saxon soup that you will find in Ontario, the Maritimes or in the US. It’s just the seasoning that changes; some cod sprinkled here, some Screech there, some crumpets here, and some angus beef there. They’re just pissed-off that they have so meager demographic weight that they cannot influence things as much as Ontario and Québec who have the highest population in Canada.\r\n\r\nYeah, I’m a separatist frog who worships Charles de Gaulle.&#39;, &#39;controversiality&#39;: 0, &#39;created_utc&#39;: 1164736253, &#39;distinguished&#39;: None, &#39;gilded&#39;: 0, &#39;id&#39;: &#39;csse5&#39;, &#39;link_id&#39;: &#39;t3_sprl&#39;, &#39;nest_level&#39;: 3, &#39;parent_id&#39;: &#39;t1_csqwh&#39;, &#39;reply_delay&#39;: 22280, &#39;retrieved_on&#39;: 1473807187, &#39;score&#39;: -5, &#39;stickied&#39;: False, &#39;subreddit&#39;: &#39;reddit.com&#39;, &#39;subreddit_id&#39;: &#39;t5_6&#39;, &#39;created&#39;: 1164729053.0})</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -136,7 +143,7 @@ nb_path: "02_collect-data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_subr" class="doc_header"><code>query_subr</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_subr</code>(<strong><code>subreddit</code></strong>, <strong><code>year</code></strong>)</p>
+<h4 id="query_subr" class="doc_header"><code>query_subr</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_subr</code>(<strong><code>subreddit</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -159,17 +166,6 @@ nb_path: "02_collect-data.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query_gen</span> <span class="o">=</span> <span class="n">query_subr</span><span class="p">(</span><span class="s1">&#39;politics&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">)</span>
-<span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -177,15 +173,23 @@ nb_path: "02_collect-data.ipynb"
 <div class="output_area">
 
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>comment(author=&#39;ooouuuurrrriiiii&#39;, author_created_utc=1164155492, author_flair_css_class=None, author_flair_text=None, author_fullname=&#39;t2_rxtz&#39;, body=&#34;It&#39;s also in Britain, so it&#39;s an Anglo-Saxon thing it seems.&#34;, controversiality=0, created_utc=1164383206, distinguished=None, gilded=0, id=&#39;csacq&#39;, link_id=&#39;t3_s818&#39;, nest_level=5, parent_id=&#39;t1_cs9id&#39;, reply_delay=20955, retrieved_on=1473806750, score=3, stickied=False, subreddit=&#39;reddit.com&#39;, subreddit_id=&#39;t5_6&#39;, created=1164376006.0, d_={&#39;author&#39;: &#39;ooouuuurrrriiiii&#39;, &#39;author_created_utc&#39;: 1164155492, &#39;author_flair_css_class&#39;: None, &#39;author_flair_text&#39;: None, &#39;author_fullname&#39;: &#39;t2_rxtz&#39;, &#39;body&#39;: &#34;It&#39;s also in Britain, so it&#39;s an Anglo-Saxon thing it seems.&#34;, &#39;controversiality&#39;: 0, &#39;created_utc&#39;: 1164383206, &#39;distinguished&#39;: None, &#39;gilded&#39;: 0, &#39;id&#39;: &#39;csacq&#39;, &#39;link_id&#39;: &#39;t3_s818&#39;, &#39;nest_level&#39;: 5, &#39;parent_id&#39;: &#39;t1_cs9id&#39;, &#39;reply_delay&#39;: 20955, &#39;retrieved_on&#39;: 1473806750, &#39;score&#39;: 3, &#39;stickied&#39;: False, &#39;subreddit&#39;: &#39;reddit.com&#39;, &#39;subreddit_id&#39;: &#39;t5_6&#39;, &#39;created&#39;: 1164376006.0})</pre>
-</div>
-
-</div>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="query_subr_year" class="doc_header"><code>query_subr_year</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_subr_year</code>(<strong><code>subreddit</code></strong>, <strong><code>year</code></strong>)</p>
+</blockquote>
 
 </div>
+
 </div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -207,7 +211,7 @@ nb_path: "02_collect-data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_results" class="doc_header"><code>get_results</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_results</code>(<strong><code>gen</code></strong>, <strong><code>limit</code></strong>)</p>
+<h4 id="get_results" class="doc_header"><code>get_results</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L43" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_results</code>(<strong><code>gen</code></strong>, <strong><code>limit</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -238,20 +242,6 @@ nb_path: "02_collect-data.ipynb"
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre> 99%|█████████▉| 99/100 [00:02&lt;00:00, 48.33it/s]
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -292,7 +282,7 @@ nb_path: "02_collect-data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="conv_results_to_df" class="doc_header"><code>conv_results_to_df</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L43" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_results_to_df</code>(<strong><code>results</code></strong>)</p>
+<h4 id="conv_results_to_df" class="doc_header"><code>conv_results_to_df</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L52" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_results_to_df</code>(<strong><code>results</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -360,33 +350,6 @@ nb_path: "02_collect-data.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0                                               SUP BRO
-1     You should have given the blog dude a piece of...
-2     I DONT THINK THERE IS A STONG CLAN PRESENCE IN...
-3     The problem is that the absurd is not preventi...
-4                                             [deleted]
-                            ...                        
-95    The same person who published this story is ke...
-96    I don&#39;t think that&#39;s really true, personally. ...
-97    You also wouldn&#39;t be concerned if they were dr...
-98    There are other social news websites besides r...
-99    &amp;gt; I wouldn&#39;t be surprised if Ron Paul takes...
-Name: body, Length: 100, dtype: object</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -407,7 +370,7 @@ Name: body, Length: 100, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="comm_subr_to_csv" class="doc_header"><code>comm_subr_to_csv</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>comm_subr_to_csv</code>(<strong><code>comments</code></strong>, <strong><code>subreddit</code></strong>=<em><code>'NaN'</code></em>, <strong><code>limit</code></strong>=<em><code>'NaN'</code></em>, <strong><code>year</code></strong>=<em><code>'NaN'</code></em>)</p>
+<h4 id="comm_subr_to_csv" class="doc_header"><code>comm_subr_to_csv</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>comm_subr_to_csv</code>(<strong><code>comments</code></strong>, <strong><code>subreddit</code></strong>=<em><code>'NaN'</code></em>, <strong><code>limit</code></strong>=<em><code>'NaN'</code></em>, <strong><code>year</code></strong>=<em><code>'NaN'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -446,31 +409,6 @@ Name: body, Length: 100, dtype: object</pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Disk-usage">Disk usage<a class="anchor-link" href="#Disk-usage"> </a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th style="text-align:right">n_comments</th>
-<th style="text-align:right">disk_usage_mb</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">10000</td>
-<td style="text-align:right">3.5</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Pipeline-function">Pipeline function<a class="anchor-link" href="#Pipeline-function"> </a></h2>
 </div>
 </div>
@@ -486,7 +424,7 @@ Name: body, Length: 100, dtype: object</pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_subr_year" class="doc_header"><code>get_subr_year</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L58" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_subr_year</code>(<strong><code>subreddit</code></strong>, <strong><code>year</code></strong>, <strong><code>limit</code></strong>)</p>
+<h4 id="get_subr_year" class="doc_header"><code>get_subr_year</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/collect_data.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_subr_year</code>(<strong><code>subreddit</code></strong>, <strong><code>year</code></strong>, <strong><code>limit</code></strong>)</p>
 </blockquote>
 
 </div>

@@ -31,6 +31,32 @@ nb_path: "03_read_data.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Variables">Variables<a class="anchor-link" href="#Variables"> </a></h1>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SUBREDDIT</span> <span class="o">=</span> <span class="s1">&#39;askreddit&#39;</span>
+<span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">100_000</span>
+<span class="n">YEARS</span> <span class="o">=</span> <span class="p">[</span><span class="n">year</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)]</span>
+<span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2010</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Imports">Imports<a class="anchor-link" href="#Imports"> </a></h2>
 </div>
 </div>
@@ -57,7 +83,7 @@ nb_path: "03_read_data.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="For-lexeme-data">For lexeme data<a class="anchor-link" href="#For-lexeme-data"> </a></h3>
+<h3 id="per-lexeme">per lexeme<a class="anchor-link" href="#per-lexeme"> </a></h3>
 </div>
 </div>
 </div>
@@ -72,7 +98,7 @@ nb_path: "03_read_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_fpaths_lex" class="doc_header"><code>get_fpaths_lex</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L11" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpaths_lex</code>(<strong><code>LEX</code></strong>, <strong><code>CORPUS_DIR</code></strong>=<em><code>'data/'</code></em>, <strong><code>source</code></strong>=<em><code>'local'</code></em>, <strong><code>bucket_name</code></strong>=<em><code>'socemb'</code></em>)</p>
+<h4 id="get_fpaths_lex" class="doc_header"><code>get_fpaths_lex</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpaths_lex</code>(<strong><code>LEX</code></strong>, <strong><code>CORPUS_DIR</code></strong>=<em><code>'data/'</code></em>, <strong><code>source</code></strong>=<em><code>'local'</code></em>, <strong><code>bucket_name</code></strong>=<em><code>'socemb'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -162,47 +188,10 @@ nb_path: "03_read_data.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="For-subreddit-data">For subreddit data<a class="anchor-link" href="#For-subreddit-data"> </a></h3>
+<h3 id="per-subreddit-(and-year)">per subreddit (and year)<a class="anchor-link" href="#per-subreddit-(and-year)"> </a></h3>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SUBREDDIT</span> <span class="o">=</span> <span class="s1">&#39;politics&#39;</span>
-<span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2007</span>
-<span class="n">YEARS</span> <span class="o">=</span> <span class="p">[</span><span class="n">year</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fpath_comm_subr_yr</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;data/subreddit/</span><span class="si">{</span><span class="n">SUBREDDIT</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">LIMIT</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s1">.csv&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -214,7 +203,7 @@ nb_path: "03_read_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_fpath_subr_yr" class="doc_header"><code>get_fpath_subr_yr</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpath_subr_yr</code>(<strong><code>SUBREDDIT</code></strong>, <strong><code>LIMIT</code></strong>, <strong><code>YEAR</code></strong>)</p>
+<h4 id="get_fpath_subr_yr" class="doc_header"><code>get_fpath_subr_yr</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpath_subr_yr</code>(<strong><code>SUBREDDIT</code></strong>, <strong><code>LIMIT</code></strong>, <strong><code>YEAR</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -241,7 +230,7 @@ nb_path: "03_read_data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_fpath_subr_yr</span><span class="p">(</span><span class="n">SUBREDDIT</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;data/subreddit/politics/100_2007.csv&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_fpath_subr_yr</span><span class="p">(</span><span class="s1">&#39;askreddit&#39;</span><span class="p">,</span> <span class="mi">100_000</span><span class="p">,</span> <span class="mi">2009</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;data/subreddit/askreddit/100000_2009.csv&#39;</span>
 </pre></div>
 
     </div>
@@ -278,7 +267,7 @@ nb_path: "03_read_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_fpaths_subr_yrs" class="doc_header"><code>get_fpaths_subr_yrs</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpaths_subr_yrs</code>(<strong><code>SUBREDDIT</code></strong>, <strong><code>LIMIT</code></strong>, <strong><code>YEARS</code></strong>)</p>
+<h4 id="get_fpaths_subr_yrs" class="doc_header"><code>get_fpaths_subr_yrs</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpaths_subr_yrs</code>(<strong><code>SUBREDDIT</code></strong>, <strong><code>LIMIT</code></strong>, <strong><code>YEARS</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -317,13 +306,196 @@ nb_path: "03_read_data.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="per-year">per year<a class="anchor-link" href="#per-year"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_fpaths_yr" class="doc_header"><code>get_fpaths_yr</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_fpaths_yr</code>(<strong><code>YEAR</code></strong>, <strong><code>DIR</code></strong>=<em><code>'data/subreddit/'</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">read_comm_csvs</span><span class="p">(</span><span class="n">fpaths</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>data/subreddit/asklibertarians/100000_2010.csv is empty
+data/subreddit/askaconservative/100000_2010.csv is empty
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>body</th>
+      <th>created_utc</th>
+      <th>id</th>
+      <th>subreddit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>That's funny, I only remember hearing that fro...</td>
+      <td>2010-12-30 22:59:53</td>
+      <td>c1aw4fb</td>
+      <td>politics</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>&amp;gt; You are completely wrong or just flat out...</td>
+      <td>2010-12-30 22:59:43</td>
+      <td>c1aw4ek</td>
+      <td>politics</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[deleted]</td>
+      <td>2010-12-30 22:59:37</td>
+      <td>c1aw4eb</td>
+      <td>politics</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Also, those in the highest tax bracket have th...</td>
+      <td>2010-12-30 22:59:34</td>
+      <td>c1aw4e7</td>
+      <td>politics</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>It is if it's free. You just target people who...</td>
+      <td>2010-12-30 22:59:33</td>
+      <td>c1aw4e5</td>
+      <td>politics</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>211095</th>
+      <td>Blankets + pets.</td>
+      <td>2010-12-27 20:42:21</td>
+      <td>c1ai194</td>
+      <td>AskReddit</td>
+    </tr>
+    <tr>
+      <th>211096</th>
+      <td>good question</td>
+      <td>2010-12-27 20:42:20</td>
+      <td>c1ai193</td>
+      <td>AskReddit</td>
+    </tr>
+    <tr>
+      <th>211097</th>
+      <td>it's probably a crime in your state as well, l...</td>
+      <td>2010-12-27 20:42:18</td>
+      <td>c1ai18u</td>
+      <td>AskReddit</td>
+    </tr>
+    <tr>
+      <th>211098</th>
+      <td>Actually, being in Egypt, the one I hear the m...</td>
+      <td>2010-12-27 20:42:14</td>
+      <td>c1ai18j</td>
+      <td>AskReddit</td>
+    </tr>
+    <tr>
+      <th>211099</th>
+      <td>&amp;gt;As for you, you say you like solving pc ty...</td>
+      <td>2010-12-27 20:42:11</td>
+      <td>c1ai186</td>
+      <td>AskReddit</td>
+    </tr>
+  </tbody>
+</table>
+<p>211100 rows × 4 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Read-comments">Read comments<a class="anchor-link" href="#Read-comments"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Read-comments-csv-file">Read comments <code>csv</code> file<a class="anchor-link" href="#Read-comments-csv-file"> </a></h3>
+<h3 id="Read-1-comments-csv-file">Read <code>1</code> comments <code>csv</code> file<a class="anchor-link" href="#Read-1-comments-csv-file"> </a></h3>
 </div>
 </div>
 </div>
@@ -334,7 +506,7 @@ nb_path: "03_read_data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;data/subreddit/politics/100_2007.csv&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="n">get_fpath_subr_yr</span><span class="p">(</span><span class="s1">&#39;askreddit&#39;</span><span class="p">,</span> <span class="mi">100_000</span><span class="p">,</span> <span class="mi">2009</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -355,7 +527,7 @@ nb_path: "03_read_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="read_comm_csv" class="doc_header"><code>read_comm_csv</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L31" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_comm_csv</code>(<strong><code>fpath</code></strong>)</p>
+<h4 id="read_comm_csv" class="doc_header"><code>read_comm_csv</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_comm_csv</code>(<strong><code>fpath</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -399,10 +571,34 @@ nb_path: "03_read_data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 99999 entries, 0 to 99999
+Data columns (total 4 columns):
+ #   Column       Non-Null Count  Dtype         
+---  ------       --------------  -----         
+ 0   body         99999 non-null  string        
+ 1   created_utc  99999 non-null  datetime64[ns]
+ 2   id           99999 non-null  string        
+ 3   subreddit    99999 non-null  string        
+dtypes: datetime64[ns](1), string(3)
+memory usage: 3.8 MB
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -411,7 +607,7 @@ nb_path: "03_read_data.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Concatenate-comment-csv-files">Concatenate comment <code>csv</code> files<a class="anchor-link" href="#Concatenate-comment-csv-files"> </a></h3>
+<h3 id="Read-multiple-comment-csv-files">Read multiple comment <code>csv</code> files<a class="anchor-link" href="#Read-multiple-comment-csv-files"> </a></h3>
 </div>
 </div>
 </div>
@@ -426,7 +622,7 @@ nb_path: "03_read_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="concat_comment_csvs" class="doc_header"><code>concat_comment_csvs</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>concat_comment_csvs</code>(<strong><code>fpaths</code></strong>)</p>
+<h4 id="read_comm_csvs" class="doc_header"><code>read_comm_csvs</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L66" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_comm_csvs</code>(<strong><code>fpaths</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -470,10 +666,99 @@ nb_path: "03_read_data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">concat_comment_csvs</span><span class="p">(</span><span class="n">fpaths</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">read_comm_csvs</span><span class="p">(</span><span class="n">fpaths</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-238-9f81ee6e7258&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>comments <span class="ansi-blue-fg">=</span> read_comm_csvs<span class="ansi-blue-fg">(</span>fpaths<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-117-7ce6dd2e24f8&gt;</span> in <span class="ansi-cyan-fg">read_comm_csvs</span><span class="ansi-blue-fg">(fpaths)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     comments_lst <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     <span class="ansi-green-fg">for</span> fpath <span class="ansi-green-fg">in</span> fpaths<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg">         </span>comments <span class="ansi-blue-fg">=</span> read_comm_csv<span class="ansi-blue-fg">(</span>fpath<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span>         comments_lst<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>comments<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>     comments_concat = pd.concat(
+
+<span class="ansi-green-fg">&lt;ipython-input-196-282d45ccc8a3&gt;</span> in <span class="ansi-cyan-fg">read_comm_csv</span><span class="ansi-blue-fg">(fpath)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>         date_parser <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> x<span class="ansi-blue-fg">:</span> pd<span class="ansi-blue-fg">.</span>to_datetime<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span> unit<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;s&#39;</span><span class="ansi-blue-fg">,</span> errors<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;coerce&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg">         comments = pd.read_csv(
+</span><span class="ansi-green-intense-fg ansi-bold">      6</span>             fpath<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>             usecols<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;id&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;created_utc&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;subreddit&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;body&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">read_csv</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="ansi-green-intense-fg ansi-bold">    608</span>     kwds<span class="ansi-blue-fg">.</span>update<span class="ansi-blue-fg">(</span>kwds_defaults<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    609</span> 
+<span class="ansi-green-fg">--&gt; 610</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> _read<span class="ansi-blue-fg">(</span>filepath_or_buffer<span class="ansi-blue-fg">,</span> kwds<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    611</span> 
+<span class="ansi-green-intense-fg ansi-bold">    612</span> 
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">_read</span><span class="ansi-blue-fg">(filepath_or_buffer, kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">    460</span> 
+<span class="ansi-green-intense-fg ansi-bold">    461</span>     <span class="ansi-red-fg"># Create the parser.</span>
+<span class="ansi-green-fg">--&gt; 462</span><span class="ansi-red-fg">     </span>parser <span class="ansi-blue-fg">=</span> TextFileReader<span class="ansi-blue-fg">(</span>filepath_or_buffer<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwds<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    463</span> 
+<span class="ansi-green-intense-fg ansi-bold">    464</span>     <span class="ansi-green-fg">if</span> chunksize <span class="ansi-green-fg">or</span> iterator<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, f, engine, **kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">    817</span>             self<span class="ansi-blue-fg">.</span>options<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;has_index_names&#34;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> kwds<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;has_index_names&#34;</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    818</span> 
+<span class="ansi-green-fg">--&gt; 819</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_engine <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_make_engine<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>engine<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    820</span> 
+<span class="ansi-green-intense-fg ansi-bold">    821</span>     <span class="ansi-green-fg">def</span> close<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">_make_engine</span><span class="ansi-blue-fg">(self, engine)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1048</span>             )
+<span class="ansi-green-intense-fg ansi-bold">   1049</span>         <span class="ansi-red-fg"># error: Too many arguments for &#34;ParserBase&#34;</span>
+<span class="ansi-green-fg">-&gt; 1050</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> mapping<span class="ansi-blue-fg">[</span>engine<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>self<span class="ansi-blue-fg">.</span>options<span class="ansi-blue-fg">)</span>  <span class="ansi-red-fg"># type: ignore[call-arg]</span>
+<span class="ansi-green-intense-fg ansi-bold">   1051</span> 
+<span class="ansi-green-intense-fg ansi-bold">   1052</span>     <span class="ansi-green-fg">def</span> _failover_to_python<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, src, **kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1865</span> 
+<span class="ansi-green-intense-fg ansi-bold">   1866</span>         <span class="ansi-red-fg"># open handles</span>
+<span class="ansi-green-fg">-&gt; 1867</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_open_handles<span class="ansi-blue-fg">(</span>src<span class="ansi-blue-fg">,</span> kwds<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1868</span>         <span class="ansi-green-fg">assert</span> self<span class="ansi-blue-fg">.</span>handles <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span>
+<span class="ansi-green-intense-fg ansi-bold">   1869</span>         <span class="ansi-green-fg">for</span> key <span class="ansi-green-fg">in</span> <span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;storage_options&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;encoding&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;memory_map&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;compression&#34;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">_open_handles</span><span class="ansi-blue-fg">(self, src, kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1360</span>         Let the readers open IOHanldes after they are done <span class="ansi-green-fg">with</span> their potential raises<span class="ansi-blue-fg">.</span>
+<span class="ansi-green-intense-fg ansi-bold">   1361</span>         &#34;&#34;&#34;
+<span class="ansi-green-fg">-&gt; 1362</span><span class="ansi-red-fg">         self.handles = get_handle(
+</span><span class="ansi-green-intense-fg ansi-bold">   1363</span>             src<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   1364</span>             <span class="ansi-blue-fg">&#34;r&#34;</span><span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/common.py</span> in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="ansi-green-intense-fg ansi-bold">    556</span> 
+<span class="ansi-green-intense-fg ansi-bold">    557</span>     <span class="ansi-red-fg"># open URLs</span>
+<span class="ansi-green-fg">--&gt; 558</span><span class="ansi-red-fg">     ioargs = _get_filepath_or_buffer(
+</span><span class="ansi-green-intense-fg ansi-bold">    559</span>         path_or_buf<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    560</span>         encoding<span class="ansi-blue-fg">=</span>encoding<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/pandas/io/common.py</span> in <span class="ansi-cyan-fg">_get_filepath_or_buffer</span><span class="ansi-blue-fg">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="ansi-green-intense-fg ansi-bold">    369</span>     <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> is_file_like<span class="ansi-blue-fg">(</span>filepath_or_buffer<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    370</span>         msg <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">f&#34;Invalid file path or buffer object type: {type(filepath_or_buffer)}&#34;</span>
+<span class="ansi-green-fg">--&gt; 371</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span>msg<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    372</span> 
+<span class="ansi-green-intense-fg ansi-bold">    373</span>     return IOArgs(
+
+<span class="ansi-red-fg">ValueError</span>: Invalid file path or buffer object type: &lt;class &#39;method&#39;&gt;</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -487,7 +772,7 @@ nb_path: "03_read_data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="s1">&#39;subreddit&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -500,113 +785,11 @@ nb_path: "03_read_data.ipynb"
 <div class="output_area">
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>body</th>
-      <th>created_utc</th>
-      <th>id</th>
-      <th>subreddit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>SUP BRO</td>
-      <td>1199055494</td>
-      <td>c02s16i</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>You should have given the blog dude a piece of...</td>
-      <td>1199055485</td>
-      <td>c02s16h</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>I DONT THINK THERE IS A STONG CLAN PRESENCE IN...</td>
-      <td>1199055470</td>
-      <td>c02s16d</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>The problem is that the absurd is not preventi...</td>
-      <td>1199055459</td>
-      <td>c02s16a</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>[deleted]</td>
-      <td>1199055396</td>
-      <td>c02s162</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1395</th>
-      <td>Actually, if you read the user agreement for P...</td>
-      <td>1609369108</td>
-      <td>ghjplk1</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>1396</th>
-      <td>The greedy don’t want to share, the rich have ...</td>
-      <td>1609369107</td>
-      <td>ghjplil</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>1397</th>
-      <td>The reality is that it probably won't even tak...</td>
-      <td>1609369105</td>
-      <td>ghjplbz</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>1398</th>
-      <td>He just invigorated her voters unwillingly</td>
-      <td>1609369104</td>
-      <td>ghjplaq</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>1399</th>
-      <td>https://en.wikipedia.org/wiki/Filibuster_in_th...</td>
-      <td>1609369104</td>
-      <td>ghjplam</td>
-      <td>politics</td>
-    </tr>
-  </tbody>
-</table>
-<p>1400 rows × 4 columns</p>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>subreddit
+politics    1400
+dtype: int64</pre>
 </div>
 
 </div>
@@ -651,7 +834,7 @@ nb_path: "03_read_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="parse_dates" class="doc_header"><code>parse_dates</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L52" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_dates</code>(<strong><code>comments</code></strong>)</p>
+<h4 id="parse_dates" class="doc_header"><code>parse_dates</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/read_data.py#L79" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_dates</code>(<strong><code>comments</code></strong>)</p>
 </blockquote>
 
 </div>
