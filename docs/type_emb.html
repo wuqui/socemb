@@ -106,23 +106,6 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">VAR_TYPE</span> <span class="o">=</span> <span class="s1">&#39;social&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">SUBREDDIT</span> <span class="o">=</span> <span class="s1">&#39;askreddit&#39;</span>
 <span class="n">T_1</span> <span class="o">=</span> <span class="mi">2010</span>
 <span class="n">T_2</span> <span class="o">=</span> <span class="mi">2020</span>
@@ -143,8 +126,24 @@ nb_path: "07_type_emb.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">COMM_1</span> <span class="o">=</span> <span class="s1">&#39;askaconservative&#39;</span>
-<span class="n">COMM_2</span> <span class="o">=</span> <span class="s1">&#39;asklibertarians&#39;</span>
-<span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="n">COMM_2</span> <span class="o">=</span> <span class="s1">&#39;politics&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2020</span>
 </pre></div>
 
     </div>
@@ -156,7 +155,13 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Read-comments">Read comments<a class="anchor-link" href="#Read-comments"> </a></h2>
+<h2 id="Train-model">Train model<a class="anchor-link" href="#Train-model"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Read-comments">Read comments<a class="anchor-link" href="#Read-comments"> </a></h3>
 </div>
 </div>
 </div>
@@ -167,7 +172,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="n">get_fpath_subr_yr</span><span class="p">(</span><span class="n">SUBREDDIT</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f_paths</span> <span class="o">=</span> <span class="n">get_fpaths_yr</span><span class="p">(</span><span class="n">YEAR</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -184,7 +189,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">read_comm_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span> <span class="o">=</span> <span class="n">read_comm_csvs</span><span class="p">(</span><span class="n">f_paths</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -208,12 +213,36 @@ nb_path: "07_type_emb.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 380964 entries, 0 to 380963
+Data columns (total 4 columns):
+ #   Column       Non-Null Count   Dtype         
+---  ------       --------------   -----         
+ 0   body         380964 non-null  string        
+ 1   created_utc  380964 non-null  datetime64[ns]
+ 2   id           380964 non-null  string        
+ 3   subreddit    380964 non-null  string        
+dtypes: datetime64[ns](1), string(3)
+memory usage: 11.6 MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Split-data-(inactive)">Split data (inactive)<a class="anchor-link" href="#Split-data-(inactive)"> </a></h2>
+<h3 id="Split-data-(inactive)">Split data (inactive)<a class="anchor-link" href="#Split-data-(inactive)"> </a></h3>
 </div>
 </div>
 </div>
@@ -338,7 +367,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pre-processing">Pre-processing<a class="anchor-link" href="#Pre-processing"> </a></h2>
+<h3 id="Pre-processing">Pre-processing<a class="anchor-link" href="#Pre-processing"> </a></h3>
 </div>
 </div>
 </div>
@@ -353,7 +382,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="conv_to_lowerc" class="doc_header"><code>conv_to_lowerc</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_to_lowerc</code>(<strong><code>doc</code></strong>)</p>
+<h4 id="conv_to_lowerc" class="doc_header"><code>conv_to_lowerc</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_to_lowerc</code>(<strong><code>doc</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -401,7 +430,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rm_punct" class="doc_header"><code>rm_punct</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L17" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>rm_punct</code>(<strong><code>doc</code></strong>)</p>
+<h4 id="rm_punct" class="doc_header"><code>rm_punct</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>rm_punct</code>(<strong><code>doc</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -449,7 +478,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="tokenize" class="doc_header"><code>tokenize</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tokenize</code>(<strong><code>doc</code></strong>)</p>
+<h4 id="tokenize" class="doc_header"><code>tokenize</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tokenize</code>(<strong><code>doc</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -497,7 +526,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="detect_short_doc" class="doc_header"><code>detect_short_doc</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>detect_short_doc</code>(<strong><code>doc</code></strong>, <strong><code>limit</code></strong>=<em><code>10</code></em>)</p>
+<h4 id="detect_short_doc" class="doc_header"><code>detect_short_doc</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>detect_short_doc</code>(<strong><code>doc</code></strong>, <strong><code>limit</code></strong>=<em><code>10</code></em>)</p>
 </blockquote>
 
 </div>
@@ -562,7 +591,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_docs" class="doc_header"><code>clean_docs</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_docs</code>(<strong><code>docs</code></strong>)</p>
+<h4 id="clean_docs" class="doc_header"><code>clean_docs</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_docs</code>(<strong><code>docs</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -613,6 +642,33 @@ nb_path: "07_type_emb.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0         [you, re, asking, how, they, re, going, to, be...
+1         [gt, i, don, t, think, there, are, any, varyin...
+2         [its, split, on, copyright, it, leans, anti, n...
+3         [that, would, be, up, to, the, land, owners, a...
+4         [i, have, him, here, gun, to, his, head, round...
+                                ...                        
+380954    [the, nature, police, are, supposed, to, be, p...
+380957    [i, got, reddit, last, year, and, only, starte...
+380958    [i, m, just, curious, how, this, is, clear, to...
+380962    [staying, at, said, job, while, being, underpa...
+380963    [i, m, not, sure, that, this, has, ever, been,...
+Name: body, Length: 264796, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -660,27 +716,10 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Create-corpus">Create corpus<a class="anchor-link" href="#Create-corpus"> </a></h2>
+<h3 id="Create-corpus">Create corpus<a class="anchor-link" href="#Create-corpus"> </a></h3>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs_clean</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -692,7 +731,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Corpus" class="doc_header"><code>class</code> <code>Corpus</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L42" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Corpus</code>(<strong><code>docs_clean</code></strong>)</p>
+<h2 id="Corpus" class="doc_header"><code>class</code> <code>Corpus</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L43" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Corpus</code>(<strong><code>docs_clean</code></strong>)</p>
 </blockquote>
 <p>An iterator that yields sentences (lists of str).</p>
 
@@ -732,7 +771,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Train-embeddings">Train embeddings<a class="anchor-link" href="#Train-embeddings"> </a></h2>
+<h3 id="Train-embeddings">Train embeddings<a class="anchor-link" href="#Train-embeddings"> </a></h3>
 </div>
 </div>
 </div>
@@ -747,7 +786,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="train_emb" class="doc_header"><code>train_emb</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L52" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>train_emb</code>(<strong><code>corpus</code></strong>, <strong><code>MIN_COUNT</code></strong>=<em><code>5</code></em>, <strong><code>SIZE</code></strong>=<em><code>300</code></em>, <strong><code>WORKERS</code></strong>=<em><code>8</code></em>, <strong><code>WINDOW</code></strong>=<em><code>3</code></em>)</p>
+<h4 id="train_emb" class="doc_header"><code>train_emb</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>train_emb</code>(<strong><code>corpus</code></strong>, <strong><code>MIN_COUNT</code></strong>=<em><code>5</code></em>, <strong><code>SIZE</code></strong>=<em><code>300</code></em>, <strong><code>WORKERS</code></strong>=<em><code>8</code></em>, <strong><code>WINDOW</code></strong>=<em><code>3</code></em>)</p>
 </blockquote>
 
 </div>
@@ -779,6 +818,21 @@ nb_path: "07_type_emb.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 2min 35s, sys: 11.1 s, total: 2min 46s
+Wall time: 1min 9s
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -816,12 +870,28 @@ nb_path: "07_type_emb.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(300,)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Evaluate-embeddings">Evaluate embeddings<a class="anchor-link" href="#Evaluate-embeddings"> </a></h2>
+<h3 id="Evaluate-embeddings">Evaluate embeddings<a class="anchor-link" href="#Evaluate-embeddings"> </a></h3>
 </div>
 </div>
 </div>
@@ -842,6 +912,29 @@ nb_path: "07_type_emb.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0/4732: the
+1/4732: to
+2/4732: a
+3/4732: and
+4/4732: i
+5/4732: of
+6/4732: that
+7/4732: it
+8/4732: is
+9/4732: you
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -856,6 +949,41 @@ nb_path: "07_type_emb.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;guy&#39;, 0.6144881248474121),
+ (&#39;woman&#39;, 0.6049772500991821),
+ (&#39;man&#39;, 0.5703142881393433),
+ (&#39;politician&#39;, 0.5600118637084961),
+ (&#39;girl&#39;, 0.5361282229423523),
+ (&#39;candidate&#39;, 0.5117915868759155),
+ (&#39;cop&#39;, 0.5107803344726562),
+ (&#39;someone&#39;, 0.4916432201862335),
+ (&#39;senator&#39;, 0.4843234419822693),
+ (&#39;kid&#39;, 0.4767877161502838),
+ (&#39;persons&#39;, 0.46128833293914795),
+ (&#39;victim&#39;, 0.45970290899276733),
+ (&#39;somebody&#39;, 0.4551505148410797),
+ (&#39;lady&#39;, 0.4502111077308655),
+ (&#39;citizen&#39;, 0.44879597425460815),
+ (&#39;owner&#39;, 0.44654402136802673),
+ (&#39;mother&#39;, 0.44434842467308044),
+ (&#39;parent&#39;, 0.44392669200897217),
+ (&#39;fetus&#39;, 0.4342397451400757),
+ (&#39;entity&#39;, 0.43350768089294434)]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -896,6 +1024,22 @@ nb_path: "07_type_emb.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.57419455</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -914,6 +1058,22 @@ nb_path: "07_type_emb.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.27401066</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -929,6 +1089,22 @@ nb_path: "07_type_emb.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.14052157</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -971,7 +1147,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Save-vectors">Save vectors<a class="anchor-link" href="#Save-vectors"> </a></h2>
+<h2 id="Save-model">Save model<a class="anchor-link" href="#Save-model"> </a></h2>
 </div>
 </div>
 </div>
@@ -982,7 +1158,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wv</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">VECS_DIR</span><span class="si">}{</span><span class="n">SUBREDDIT</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">LIMIT</span><span class="si">}</span><span class="s1">.wv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wv</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;~/promo/socemb/data/vecs/year/</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s1">.wv&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -994,7 +1170,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-vectors">Load vectors<a class="anchor-link" href="#Load-vectors"> </a></h2>
+<h2 id="Load-models">Load models<a class="anchor-link" href="#Load-models"> </a></h2>
 </div>
 </div>
 </div>
@@ -1025,13 +1201,43 @@ nb_path: "07_type_emb.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="load_model" class="doc_header"><code>load_model</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>load_model</code>(<strong><code>SUBREDDIT</code></strong>:<code>str</code>, <strong><code>YEAR</code></strong>:<code>int</code>, <strong><code>LIMIT</code></strong>:<code>int</code>=<em><code>100000</code></em>)</p>
+</blockquote>
+<p>Load word2vec model from disk.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+model_1 = KeyedVectors.load(f'data/vecs/year/2010.wv', mmap='r')model_2 = KeyedVectors.load(f'data/vecs/year/2020.wv', mmap='r')
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="n">SUBREDDIT</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/vecs/</span><span class="si">{</span><span class="n">SUBREDDIT</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">LIMIT</span><span class="si">}</span><span class="s1">.wv&#39;</span><span class="p">,</span> <span class="n">mmap</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1048,7 +1254,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_1</span> <span class="o">=</span> <span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/vecs/year/2010.wv&#39;</span><span class="p">,</span> <span class="n">mmap</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2013</span>
 </pre></div>
 
     </div>
@@ -1065,10 +1271,303 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_1</span> <span class="o">=</span> <span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/vecs/year/2020.wv&#39;</span><span class="p">,</span> <span class="n">mmap</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LEX</span> <span class="o">=</span> <span class="s1">&#39;trump&#39;</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_1</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">COMM_1</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_2</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">COMM_2</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Extract-vector">Extract vector<a class="anchor-link" href="#Extract-vector"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_vec_from_model" class="doc_header"><code>get_vec_from_model</code><a href="https://github.com/wuqui/socemb/tree/master/socemb/type_emb.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_vec_from_model</code>(<strong><code>lex</code></strong>:<code>str</code>, <strong><code>model</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_vec_from_model</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">model_1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.00899458e-01, -1.52170643e-01, -9.39689055e-02, -9.99266282e-03,
+        8.40886682e-02, -2.21601501e-02, -2.10636541e-01,  3.73399556e-02,
+       -1.49149716e-01,  2.40157068e-01, -6.44295737e-02,  3.83358356e-03,
+        1.28691554e-01, -3.57708037e-02,  5.21394191e-03, -1.38501897e-01,
+       -5.26996851e-02,  1.61609109e-02, -8.78354255e-03,  7.47078285e-02,
+        1.85247645e-01, -1.60785943e-01,  9.02396999e-03, -8.07802901e-02,
+        1.38207108e-01,  7.45966509e-02, -8.67893994e-02, -3.15905828e-03,
+       -9.56856683e-02,  1.56406348e-03, -1.31446823e-01, -1.16315879e-01,
+       -1.51329443e-01,  3.41142602e-02, -2.11179614e-01,  1.42359763e-01,
+        4.96119075e-02, -7.68923908e-02, -1.69393018e-01,  6.09558728e-03,
+       -6.81157708e-02,  3.04796919e-02,  1.52811790e-02,  8.24113786e-02,
+       -1.50099978e-01, -8.96327049e-02, -8.57340470e-02,  1.70979887e-01,
+       -1.25112638e-01,  2.76306607e-02,  2.79491618e-02,  9.32807103e-02,
+       -8.61876681e-02,  1.77944619e-02,  2.96345446e-02,  5.30728213e-02,
+       -8.04494545e-02, -5.01200259e-02,  1.03507631e-01,  1.71503704e-02,
+       -1.30950613e-02, -1.35419443e-01, -2.07035676e-01,  2.01879710e-01,
+        3.25351916e-02, -1.29286498e-01, -1.97531446e-03, -1.24894537e-01,
+       -4.70467582e-02, -5.72806485e-02,  2.65490144e-01,  1.32199138e-01,
+       -1.23013787e-01,  1.43621787e-01, -1.69478387e-01, -7.81497061e-02,
+       -1.00367889e-01, -1.21399298e-01,  7.81577751e-02, -1.83465760e-02,
+        7.79631063e-02, -1.19734975e-02,  1.60187319e-01, -1.71157122e-01,
+        7.66789392e-02,  7.91621804e-02,  1.02329522e-01,  3.14248577e-02,
+       -6.46566320e-03,  7.77441710e-02, -8.66011456e-02,  1.13437630e-01,
+       -4.57763635e-02,  2.04980507e-01, -7.56074786e-02,  8.36985260e-02,
+        1.42146304e-01, -6.21182211e-02, -2.30045334e-01,  1.18040875e-01,
+       -5.66891246e-02, -8.21440369e-02, -4.80789393e-02, -1.77437097e-01,
+        9.91176143e-02, -3.86907533e-03, -2.86260829e-03, -2.78975964e-02,
+        5.89535804e-03, -3.08745392e-02,  8.62547010e-02,  9.48113762e-03,
+        5.90718351e-02,  3.37393098e-02,  3.28736864e-02,  1.05816521e-01,
+       -1.95885465e-01, -5.06097898e-02,  6.13971949e-02, -4.65643108e-02,
+        4.25615050e-02, -3.81718166e-02, -1.26955379e-03,  8.49239081e-02,
+        9.27404463e-02, -1.93988755e-02,  6.38775080e-02,  6.18626922e-02,
+        1.85889825e-02,  5.36145121e-02, -7.63010159e-02, -2.28864029e-02,
+        1.12783954e-01, -6.77656010e-02, -5.40199578e-02,  4.24536690e-02,
+       -2.10998636e-02,  4.41271439e-02, -2.11109277e-02, -4.07798216e-02,
+       -6.53017089e-02,  8.22475106e-02, -1.27006799e-01,  5.21760248e-02,
+        7.72923231e-02,  5.92733584e-02, -7.59449974e-02,  1.37864519e-02,
+        6.56161755e-02,  1.87342602e-03, -2.98692621e-02, -1.71438992e-01,
+       -2.10373942e-02, -1.79248124e-01,  3.55278850e-02, -1.39222652e-01,
+       -3.55466902e-02, -7.04349484e-03,  2.28033274e-01,  6.31250069e-02,
+       -5.19976579e-02, -4.49401466e-03, -6.95441291e-02, -6.49695545e-02,
+        4.41456810e-02, -6.32601529e-02,  7.57679529e-03, -1.96926054e-02,
+        7.52070323e-02, -1.74132443e-03, -5.39307296e-02, -7.09064826e-02,
+        3.26468796e-02,  5.22061251e-02,  5.12205139e-02,  4.76659238e-02,
+        4.56579439e-02, -6.42024055e-02,  4.80341092e-02,  1.02350175e-01,
+        2.31694374e-02,  3.88065204e-02,  7.10783824e-02,  2.59597432e-02,
+       -7.04208985e-02, -5.36137959e-03,  6.84704483e-02,  8.51734355e-02,
+       -8.39377567e-03,  2.19820887e-02,  3.01600471e-02,  1.38070583e-01,
+       -1.10092148e-01, -3.17500904e-02, -1.83150789e-03, -4.73540314e-02,
+        1.40368238e-01,  6.80037290e-02,  9.01781917e-02, -4.44593504e-02,
+       -1.51467979e-01,  2.42187525e-04, -1.63563807e-02, -2.57572215e-02,
+       -2.11305395e-02,  5.19033298e-02,  5.04359379e-02, -1.33758308e-02,
+        6.89290091e-02,  3.82616222e-02,  2.53892485e-02, -1.34443000e-01,
+        3.35669331e-02, -9.69510302e-02,  1.39094278e-01, -1.65155530e-02,
+       -1.82096679e-02, -1.11466005e-01, -1.87195148e-02, -8.53353441e-02,
+       -8.79665278e-03, -1.62471592e-01, -1.18864387e-01, -1.06037967e-01,
+        2.03552887e-01,  7.81466141e-02, -2.55257934e-02,  4.41919118e-02,
+       -5.35115274e-03,  7.41289705e-02, -5.00492938e-02, -5.14440984e-02,
+        5.54420315e-02, -9.08971801e-02, -1.12828091e-01, -2.74523664e-02,
+        1.00473501e-01, -9.29718390e-02, -2.66576800e-02, -1.88935280e-01,
+        2.80526970e-02, -2.32480541e-02, -5.77526242e-02, -9.31198150e-03,
+       -8.35336000e-02, -9.56062749e-02,  4.66225483e-02, -2.34191064e-02,
+        6.23474680e-02, -5.16520888e-02,  5.65064214e-02,  3.69520336e-02,
+        6.20320924e-02, -2.31802110e-02,  5.98645248e-02,  1.64918024e-02,
+       -9.69538540e-02, -6.29603118e-02,  5.67020923e-02, -5.48162777e-03,
+        5.18470295e-02, -3.28053050e-02,  5.66279180e-02, -8.10693279e-02,
+       -1.41203394e-02,  4.06210162e-02,  9.53703597e-02,  1.13088809e-01,
+        1.04754485e-01, -4.08964790e-02,  9.57574025e-02, -6.97239265e-02,
+        1.65452719e-01, -3.47949490e-02,  5.89585938e-02, -9.36866552e-02,
+       -1.28151579e-02,  3.97527851e-02,  1.17300674e-01, -9.36452113e-03,
+       -1.83551311e-02, -7.25350156e-02, -8.76323506e-02,  1.00873560e-01,
+        3.77283618e-02, -1.09247148e-01, -6.19297586e-02,  8.83863196e-02,
+       -8.11952353e-02,  9.49463025e-02,  1.85441911e-01,  8.52522478e-02,
+       -5.40838875e-02, -4.11648862e-02, -2.67577432e-02,  3.95672396e-02,
+        3.55071016e-02,  1.16477825e-01, -1.97351836e-02, -2.07517445e-02],
+      dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vec_1</span> <span class="o">=</span> <span class="n">model_1</span><span class="p">[</span><span class="s1">&#39;trump&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vec_2</span> <span class="o">=</span> <span class="n">model_2</span><span class="p">[</span><span class="s1">&#39;trump&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Soc / 2020 / conservative vs. politics</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cosine</span><span class="p">(</span><span class="n">trump_cons_vec</span><span class="p">,</span> <span class="n">trump_pol_vec</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.6027644872665405</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Soc / 2013 / conservative vs. politics</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cosine</span><span class="p">(</span><span class="n">vec_1</span><span class="p">,</span> <span class="n">vec_2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.5683872997760773</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1094,7 +1593,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vec_t1</span> <span class="o">=</span> <span class="n">vecs_t1</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vec_t1</span> <span class="o">=</span> <span class="n">model_1</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1111,7 +1610,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vec_t2</span> <span class="o">=</span> <span class="n">vecs_t2</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vec_t2</span> <span class="o">=</span> <span class="n">model_2</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1177,7 +1676,7 @@ nb_path: "07_type_emb.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.6213354766368866</pre>
+<pre>0.6892097592353821</pre>
 </div>
 
 </div>
@@ -1286,104 +1785,104 @@ nb_path: "07_type_emb.ipynb"
   </thead>
   <tbody>
     <tr>
-      <th>87</th>
-      <td>that</td>
-      <td>1.053959</td>
+      <th>415</th>
+      <td>2000</td>
+      <td>1.094130</td>
     </tr>
     <tr>
-      <th>12078</th>
-      <td>mitch</td>
-      <td>0.956240</td>
-    </tr>
-    <tr>
-      <th>13711</th>
-      <td>stressed</td>
-      <td>0.938686</td>
-    </tr>
-    <tr>
-      <th>6964</th>
-      <td>pardons</td>
-      <td>0.927164</td>
-    </tr>
-    <tr>
-      <th>6551</th>
-      <td>adhd</td>
-      <td>0.923108</td>
-    </tr>
-    <tr>
-      <th>15113</th>
-      <td>2k</td>
-      <td>0.918534</td>
-    </tr>
-    <tr>
-      <th>6085</th>
-      <td>pardon</td>
-      <td>0.914406</td>
-    </tr>
-    <tr>
-      <th>5233</th>
-      <td>filibuster</td>
-      <td>0.913616</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>actually</td>
-      <td>0.912229</td>
-    </tr>
-    <tr>
-      <th>16466</th>
+      <th>8749</th>
       <td>kentucky</td>
-      <td>0.904231</td>
+      <td>1.061203</td>
     </tr>
     <tr>
-      <th>12576</th>
-      <td>shower</td>
-      <td>0.892698</td>
+      <th>2872</th>
+      <td>mitch</td>
+      <td>1.040116</td>
     </tr>
     <tr>
-      <th>7308</th>
-      <td>pray</td>
-      <td>0.891886</td>
+      <th>12751</th>
+      <td>irreparable</td>
+      <td>1.026567</td>
     </tr>
     <tr>
-      <th>4416</th>
-      <td>cuz</td>
-      <td>0.890170</td>
+      <th>12012</th>
+      <td>2k</td>
+      <td>1.025281</td>
     </tr>
     <tr>
-      <th>9875</th>
-      <td>nails</td>
-      <td>0.887633</td>
+      <th>5045</th>
+      <td>r</td>
+      <td>1.010832</td>
     </tr>
     <tr>
-      <th>3022</th>
-      <td>remembered</td>
-      <td>0.883931</td>
+      <th>706</th>
+      <td>600</td>
+      <td>1.001934</td>
     </tr>
     <tr>
-      <th>10372</th>
-      <td>flipped</td>
-      <td>0.881784</td>
+      <th>484</th>
+      <td>georgia</td>
+      <td>0.998421</td>
     </tr>
     <tr>
-      <th>13845</th>
-      <td>2022</td>
-      <td>0.877658</td>
+      <th>11903</th>
+      <td>moscow</td>
+      <td>0.993207</td>
     </tr>
     <tr>
-      <th>13976</th>
-      <td>deaf</td>
-      <td>0.877284</td>
+      <th>4954</th>
+      <td>mcconnell</td>
+      <td>0.990447</td>
     </tr>
     <tr>
-      <th>3201</th>
-      <td>enthusiasm</td>
-      <td>0.876200</td>
+      <th>8871</th>
+      <td>fuck</td>
+      <td>0.984308</td>
     </tr>
     <tr>
-      <th>9087</th>
-      <td>researched</td>
-      <td>0.873359</td>
+      <th>3754</th>
+      <td>somehow</td>
+      <td>0.979167</td>
+    </tr>
+    <tr>
+      <th>2303</th>
+      <td>pardon</td>
+      <td>0.978435</td>
+    </tr>
+    <tr>
+      <th>5946</th>
+      <td>permanent</td>
+      <td>0.974714</td>
+    </tr>
+    <tr>
+      <th>685</th>
+      <td>debate</td>
+      <td>0.973178</td>
+    </tr>
+    <tr>
+      <th>451</th>
+      <td>criteria</td>
+      <td>0.972044</td>
+    </tr>
+    <tr>
+      <th>2542</th>
+      <td>explicitly</td>
+      <td>0.969388</td>
+    </tr>
+    <tr>
+      <th>3402</th>
+      <td>contempt</td>
+      <td>0.964600</td>
+    </tr>
+    <tr>
+      <th>1245</th>
+      <td>forms</td>
+      <td>0.958226</td>
+    </tr>
+    <tr>
+      <th>13061</th>
+      <td>shitty</td>
+      <td>0.956934</td>
     </tr>
   </tbody>
 </table>
@@ -1411,7 +1910,7 @@ nb_path: "07_type_emb.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lex</span> <span class="o">=</span> <span class="s1">&#39;pardons&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lex</span> <span class="o">=</span> <span class="s1">&#39;moscow&#39;</span>
 </pre></div>
 
     </div>
@@ -1444,33 +1943,89 @@ nb_path: "07_type_emb.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>statements        604
-crimes           1746
-allegations       224
-arrests           134
-convictions       114
-appointees         66
-witnesses         211
-acts              634
-charges           667
-pardon           1009
+<pre>tennessee          22
+indiana            30
+boston             40
+massachusetts      41
+hawaii             33
+philly             30
+hogan              21
+mississippi        26
+1989                8
+nv                 13
 
 ---
 
-dares               6
-barrett            10
-nominations         7
-th                  5
-maliciously         8
-profiles            6
-resisting          28
-facist              6
-delegates          20
-byrd                5
+mcconnell        3447
+mcconnel          171
+mcconnells         91
+bluffing            6
+mconnell           11
+mcconell           18
+mcturtle           35
+blocks            101
+mitch            3221
+turtle            249
 
 ---
 
 </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">[</span><span class="n">model_1</span><span class="p">,</span> <span class="n">model_2</span><span class="p">]:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">lex</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="n">nb</span><span class="p">]</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">nb</span><span class="si">:</span><span class="s1">&lt;15</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="n">nb</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="si">:</span><span class="s1">&gt;6</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-229-26e9e9e88f99&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     i <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     <span class="ansi-green-fg">while</span> i <span class="ansi-blue-fg">&lt;</span> <span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">for</span> nb<span class="ansi-blue-fg">,</span> dist <span class="ansi-green-fg">in</span> model<span class="ansi-blue-fg">.</span>most_similar<span class="ansi-blue-fg">(</span>lex<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>             <span class="ansi-green-fg">if</span> model<span class="ansi-blue-fg">.</span>vocab<span class="ansi-blue-fg">[</span>nb<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>count <span class="ansi-blue-fg">&gt;</span> <span class="ansi-cyan-fg">300</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span>                 print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">f&#39;{nb:&lt;15}{model.vocab[nb].count:&gt;6}&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/gensim/models/keyedvectors.py</span> in <span class="ansi-cyan-fg">most_similar</span><span class="ansi-blue-fg">(self, positive, negative, topn, restrict_vocab, indexer)</span>
+<span class="ansi-green-intense-fg ansi-bold">    562</span> 
+<span class="ansi-green-intense-fg ansi-bold">    563</span>         limited <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>vectors_norm <span class="ansi-green-fg">if</span> restrict_vocab <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span> <span class="ansi-green-fg">else</span> self<span class="ansi-blue-fg">.</span>vectors_norm<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span>restrict_vocab<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 564</span><span class="ansi-red-fg">         </span>dists <span class="ansi-blue-fg">=</span> dot<span class="ansi-blue-fg">(</span>limited<span class="ansi-blue-fg">,</span> mean<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    565</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> topn<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    566</span>             <span class="ansi-green-fg">return</span> dists
+
+<span class="ansi-green-fg">&lt;__array_function__ internals&gt;</span> in <span class="ansi-cyan-fg">dot</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 
@@ -1510,7 +2065,7 @@ byrd                5
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">[</span><span class="n">vecs_t1</span><span class="p">,</span> <span class="n">vecs_t2</span><span class="p">]:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">[</span><span class="n">model_1</span><span class="p">,</span> <span class="n">model_2</span><span class="p">]:</span>
     <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">lex</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1526,29 +2081,29 @@ byrd                5
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>lift
-spark
-tighten
-stifle
-weaken
-override
-alleviate
-ramp
-wash
-enhance
+<pre>bankrupt
+absorb
+distributed
+detect
+essentials
+composite
+bypass
+ideally
+glide
+prop
 
 ---
 
 biden
 bernie
 obama
-himself
-he
-sanders
 hillary
-him
+sanders
+he
+himself
 nixon
 putin
+pelosi
 
 ---
 
@@ -2210,13 +2765,13 @@ explanatory
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="'woke'">'woke'<a class="anchor-link" href="#'woke'"> </a></h3>
+<h3 id="Semantic-change-/-neology">Semantic change / neology<a class="anchor-link" href="#Semantic-change-/-neology"> </a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Nearest-semantic-neighbours">Nearest semantic neighbours<a class="anchor-link" href="#Nearest-semantic-neighbours"> </a></h4>
+<h4 id="2010-vs.-2020">2010 vs. 2020<a class="anchor-link" href="#2010-vs.-2020"> </a></h4>
 </div>
 </div>
 </div>
@@ -2227,169 +2782,150 @@ explanatory
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_2012</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dists</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-    {% endraw %}
+<div class="output_wrapper">
+<div class="output">
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="output_area">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_2013</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-</div>
-    {% endraw %}
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_2020</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Semantic-distances">Semantic distances<a class="anchor-link" href="#Semantic-distances"> </a></h4>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">woke_2012</span> <span class="o">=</span> <span class="n">model_2012</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="s1">&#39;woke&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">woke_2013</span> <span class="o">=</span> <span class="n">model_2013</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="s1">&#39;woke&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">woke_2020</span> <span class="o">=</span> <span class="n">model_2020</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="s1">&#39;woke&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">woke_2012</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">woke_2020</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-
-    </div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>word</th>
+      <th>dist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3368</th>
+      <td>theonion</td>
+      <td>1.073174</td>
+    </tr>
+    <tr>
+      <th>14398</th>
+      <td>trump</td>
+      <td>1.064995</td>
+    </tr>
+    <tr>
+      <th>24331</th>
+      <td>pronouns</td>
+      <td>1.063726</td>
+    </tr>
+    <tr>
+      <th>5941</th>
+      <td>quarantine</td>
+      <td>1.026087</td>
+    </tr>
+    <tr>
+      <th>20712</th>
+      <td>autonomy</td>
+      <td>1.000578</td>
+    </tr>
+    <tr>
+      <th>2834</th>
+      <td>chat</td>
+      <td>0.993065</td>
+    </tr>
+    <tr>
+      <th>19200</th>
+      <td>ccp</td>
+      <td>0.990134</td>
+    </tr>
+    <tr>
+      <th>3474</th>
+      <td>guardian</td>
+      <td>0.988905</td>
+    </tr>
+    <tr>
+      <th>23239</th>
+      <td>lockdown</td>
+      <td>0.987755</td>
+    </tr>
+    <tr>
+      <th>16618</th>
+      <td>230</td>
+      <td>0.987645</td>
+    </tr>
+    <tr>
+      <th>22663</th>
+      <td>pronoun</td>
+      <td>0.979626</td>
+    </tr>
+    <tr>
+      <th>6978</th>
+      <td>cancel</td>
+      <td>0.975683</td>
+    </tr>
+    <tr>
+      <th>20920</th>
+      <td>absolved</td>
+      <td>0.967182</td>
+    </tr>
+    <tr>
+      <th>1758</th>
+      <td>sub</td>
+      <td>0.964382</td>
+    </tr>
+    <tr>
+      <th>6053</th>
+      <td>messaging</td>
+      <td>0.961209</td>
+    </tr>
+    <tr>
+      <th>2473</th>
+      <td>bot</td>
+      <td>0.961136</td>
+    </tr>
+    <tr>
+      <th>1231</th>
+      <td>https</td>
+      <td>0.961055</td>
+    </tr>
+    <tr>
+      <th>1689</th>
+      <td>pardon</td>
+      <td>0.959310</td>
+    </tr>
+    <tr>
+      <th>21526</th>
+      <td>kink</td>
+      <td>0.957009</td>
+    </tr>
+    <tr>
+      <th>17816</th>
+      <td>frontline</td>
+      <td>0.950385</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
 
 </div>
-    {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">woke_2012</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">woke_2013</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -2398,13 +2934,7 @@ explanatory
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="'Anglo-Saxon'">'Anglo-Saxon'<a class="anchor-link" href="#'Anglo-Saxon'"> </a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="diachronic">diachronic<a class="anchor-link" href="#diachronic"> </a></h4>
+<h4 id="'trump'">'trump'<a class="anchor-link" href="#'trump'"> </a></h4>
 </div>
 </div>
 </div>
@@ -2415,135 +2945,52 @@ explanatory
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2015</span> <span class="o">=</span> <span class="n">model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">[</span><span class="n">model_1</span><span class="p">,</span> <span class="n">model_2</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">lex</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">nb</span><span class="si">:</span><span class="s1">&lt;15</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="n">nb</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="si">:</span><span class="s1">&gt;6</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-    {% endraw %}
+<div class="output_wrapper">
+<div class="output">
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="output_area">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2015</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>fatten              5
+revert             19
+seize              33
+flare              14
+tighten            20
+spark              44
+dissolve           31
+freeze             64
+stifle             32
+clog                9
 
-    </div>
-</div>
-</div>
+---
 
-</div>
-    {% endraw %}
+biden            8867
+obama            3149
+trumps            843
+he              62307
+putin             315
+djt                70
+hillary           896
+bernie           2856
+him             17557
+jojo              110
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+---
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2020</span> <span class="o">=</span> <span class="n">model</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_2020</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-
-    </div>
+</pre>
 </div>
 </div>
 
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="social">social<a class="anchor-link" href="#social"> </a></h4>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_politics</span> <span class="o">=</span> <span class="n">model</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_politics</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_historians</span> <span class="o">=</span> <span class="n">model</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_anglo_saxon_historians</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">LEX</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 

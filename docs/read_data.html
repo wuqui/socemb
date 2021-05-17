@@ -348,7 +348,7 @@ nb_path: "03_read_data.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">read_comm_csvs</span><span class="p">(</span><span class="n">fpaths</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_fpaths_yr</span><span class="p">(</span><span class="mi">2010</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -360,123 +360,16 @@ nb_path: "03_read_data.ipynb"
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>data/subreddit/asklibertarians/100000_2010.csv is empty
-data/subreddit/askaconservative/100000_2010.csv is empty
-</pre>
-</div>
-</div>
-
-<div class="output_area">
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>body</th>
-      <th>created_utc</th>
-      <th>id</th>
-      <th>subreddit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>That's funny, I only remember hearing that fro...</td>
-      <td>2010-12-30 22:59:53</td>
-      <td>c1aw4fb</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>&amp;gt; You are completely wrong or just flat out...</td>
-      <td>2010-12-30 22:59:43</td>
-      <td>c1aw4ek</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>[deleted]</td>
-      <td>2010-12-30 22:59:37</td>
-      <td>c1aw4eb</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Also, those in the highest tax bracket have th...</td>
-      <td>2010-12-30 22:59:34</td>
-      <td>c1aw4e7</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>It is if it's free. You just target people who...</td>
-      <td>2010-12-30 22:59:33</td>
-      <td>c1aw4e5</td>
-      <td>politics</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>211095</th>
-      <td>Blankets + pets.</td>
-      <td>2010-12-27 20:42:21</td>
-      <td>c1ai194</td>
-      <td>AskReddit</td>
-    </tr>
-    <tr>
-      <th>211096</th>
-      <td>good question</td>
-      <td>2010-12-27 20:42:20</td>
-      <td>c1ai193</td>
-      <td>AskReddit</td>
-    </tr>
-    <tr>
-      <th>211097</th>
-      <td>it's probably a crime in your state as well, l...</td>
-      <td>2010-12-27 20:42:18</td>
-      <td>c1ai18u</td>
-      <td>AskReddit</td>
-    </tr>
-    <tr>
-      <th>211098</th>
-      <td>Actually, being in Egypt, the one I hear the m...</td>
-      <td>2010-12-27 20:42:14</td>
-      <td>c1ai18j</td>
-      <td>AskReddit</td>
-    </tr>
-    <tr>
-      <th>211099</th>
-      <td>&amp;gt;As for you, you say you like solving pc ty...</td>
-      <td>2010-12-27 20:42:11</td>
-      <td>c1ai186</td>
-      <td>AskReddit</td>
-    </tr>
-  </tbody>
-</table>
-<p>211100 rows × 4 columns</p>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[PosixPath(&#39;data/subreddit/asklibertarians/100000_2010.csv&#39;),
+ PosixPath(&#39;data/subreddit/askaconservative/100000_2010.csv&#39;),
+ PosixPath(&#39;data/subreddit/politics/100000_2010.csv&#39;),
+ PosixPath(&#39;data/subreddit/politics/10000_2010.csv&#39;),
+ PosixPath(&#39;data/subreddit/politics/1000_2010.csv&#39;),
+ PosixPath(&#39;data/subreddit/politics/100_2010.csv&#39;),
+ PosixPath(&#39;data/subreddit/askreddit/100000_2010.csv&#39;)]</pre>
 </div>
 
 </div>

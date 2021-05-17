@@ -90,9 +90,9 @@ nb_path: "00_processing.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">METHOD</span> <span class="o">=</span> <span class="s1">&#39;subreddit&#39;</span>
-<span class="n">SUBREDDIT</span> <span class="o">=</span> <span class="s1">&#39;askreddit&#39;</span>
+<span class="n">SUBREDDIT</span> <span class="o">=</span> <span class="s1">&#39;conservative&#39;</span>
 <span class="n">YEARS</span> <span class="o">=</span> <span class="p">[</span><span class="n">year</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)]</span>
-<span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">100_000</span>
+<span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">500_000</span>
 </pre></div>
 
     </div>
@@ -109,7 +109,7 @@ nb_path: "00_processing.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YEAR</span> <span class="o">=</span> <span class="s1">&#39;2012&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YEAR</span> <span class="o">=</span> <span class="s1">&#39;2006&#39;</span>
 </pre></div>
 
     </div>
@@ -150,7 +150,7 @@ nb_path: "00_processing.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">query_subr</span><span class="p">(</span><span class="s1">&#39;politics&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">query_subr</span><span class="p">(</span><span class="n">SUBREDDIT</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -168,7 +168,7 @@ nb_path: "00_processing.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">get_results</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="mi">1_000_000</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">get_results</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -181,161 +181,30 @@ nb_path: "00_processing.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>  0%|          | 1001/1000000 [01:05&lt;15:36:52, 17.77it/s]/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:252: UserWarning: Not all PushShift shards are active. Query results may be incomplete
+<pre>  0%|          | 1301/500000 [00:59&lt;6:28:17, 21.41it/s]/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:252: UserWarning: Not all PushShift shards are active. Query results may be incomplete
   warnings.warn(shards_down_message)
-  1%|▏         | 14101/1000000 [16:01&lt;21:17:22, 12.86it/s]/Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:192: UserWarning: Got non 200 code 502
+ 10%|█         | 51801/500000 [38:50&lt;9:52:13, 12.61it/s] /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:192: UserWarning: Got non 200 code 502
   warnings.warn(&#34;Got non 200 code %s&#34; % response.status_code)
 /Users/quirin/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py:180: UserWarning: Unable to connect to pushshift.io. Retrying after backoff.
   warnings.warn(&#34;Unable to connect to pushshift.io. Retrying after backoff.&#34;)
- 24%|██▍       | 244700/1000000 [8:15:19&lt;25:28:53,  8.23it/s]
+100%|█████████▉| 499999/500000 [3:27:09&lt;00:00, 40.23it/s]   </pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 7min 29s, sys: 31 s, total: 8min
+Wall time: 3h 27min 9s
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
+<div class="output_subarea output_stream output_stderr output_text">
 <pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;timed exec&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-
-<span class="ansi-green-fg">~/promo/socemb/socemb/collect_data.py</span> in <span class="ansi-cyan-fg">get_results</span><span class="ansi-blue-fg">(gen, limit)</span>
-<span class="ansi-green-intense-fg ansi-bold">     43</span> <span class="ansi-green-fg">def</span> get_results<span class="ansi-blue-fg">(</span>gen<span class="ansi-blue-fg">,</span> limit<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     44</span>     cache <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">---&gt; 45</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">for</span> c <span class="ansi-green-fg">in</span> tqdm<span class="ansi-blue-fg">(</span>gen<span class="ansi-blue-fg">,</span> total<span class="ansi-blue-fg">=</span>limit<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     46</span>         cache<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>c<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     47</span>         <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>cache<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">&gt;=</span> limit<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/tqdm/std.py</span> in <span class="ansi-cyan-fg">__iter__</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1176</span> 
-<span class="ansi-green-intense-fg ansi-bold">   1177</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1178</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">for</span> obj <span class="ansi-green-fg">in</span> iterable<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1179</span>                 <span class="ansi-green-fg">yield</span> obj
-<span class="ansi-green-intense-fg ansi-bold">   1180</span>                 <span class="ansi-red-fg"># Update and possibly print the progressbar.</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py</span> in <span class="ansi-cyan-fg">_search</span><span class="ansi-blue-fg">(self, kind, stop_condition, return_batch, dataset, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    236</span>         endpoint <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;{dataset}/{kind}/search&#39;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>dataset<span class="ansi-blue-fg">=</span>dataset<span class="ansi-blue-fg">,</span> kind<span class="ansi-blue-fg">=</span>kind<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    237</span>         url <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>base_url<span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>endpoint<span class="ansi-blue-fg">=</span>endpoint<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 238</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">for</span> response <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>_handle_paging<span class="ansi-blue-fg">(</span>url<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    239</span>             <span class="ansi-green-fg">if</span> <span class="ansi-blue-fg">&#39;aggs&#39;</span> <span class="ansi-green-fg">in</span> response<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    240</span>                 <span class="ansi-green-fg">yield</span> response<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;aggs&#39;</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py</span> in <span class="ansi-cyan-fg">_handle_paging</span><span class="ansi-blue-fg">(self, url)</span>
-<span class="ansi-green-intense-fg ansi-bold">    213</span>             self<span class="ansi-blue-fg">.</span>_add_nec_args<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>payload<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    214</span> 
-<span class="ansi-green-fg">--&gt; 215</span><span class="ansi-red-fg">             </span>data <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_get<span class="ansi-blue-fg">(</span>url<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>payload<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    216</span>             <span class="ansi-green-fg">yield</span> data
-<span class="ansi-green-intense-fg ansi-bold">    217</span>             <span class="ansi-green-fg">if</span> limit <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/psaw/PushshiftAPI.py</span> in <span class="ansi-cyan-fg">_get</span><span class="ansi-blue-fg">(self, url, payload)</span>
-<span class="ansi-green-intense-fg ansi-bold">    182</span>             i<span class="ansi-blue-fg">+=</span><span class="ansi-cyan-fg">1</span>
-<span class="ansi-green-intense-fg ansi-bold">    183</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 184</span><span class="ansi-red-fg">                 </span>response <span class="ansi-blue-fg">=</span> requests<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">(</span>url<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">=</span>payload<span class="ansi-blue-fg">,</span> proxies<span class="ansi-blue-fg">=</span>self<span class="ansi-blue-fg">.</span>proxies<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    185</span>                 log<span class="ansi-blue-fg">.</span>info<span class="ansi-blue-fg">(</span>response<span class="ansi-blue-fg">.</span>url<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    186</span>                 log<span class="ansi-blue-fg">.</span>debug<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Response status code: %s&#39;</span> <span class="ansi-blue-fg">%</span> response<span class="ansi-blue-fg">.</span>status_code<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/requests/api.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(url, params, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">     74</span> 
-<span class="ansi-green-intense-fg ansi-bold">     75</span>     kwargs<span class="ansi-blue-fg">.</span>setdefault<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;allow_redirects&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 76</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> request<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;get&#39;</span><span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">=</span>params<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     77</span> 
-<span class="ansi-green-intense-fg ansi-bold">     78</span> 
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/requests/api.py</span> in <span class="ansi-cyan-fg">request</span><span class="ansi-blue-fg">(method, url, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">     59</span>     <span class="ansi-red-fg"># cases, and look like a memory leak in others.</span>
-<span class="ansi-green-intense-fg ansi-bold">     60</span>     <span class="ansi-green-fg">with</span> sessions<span class="ansi-blue-fg">.</span>Session<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> session<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 61</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> session<span class="ansi-blue-fg">.</span>request<span class="ansi-blue-fg">(</span>method<span class="ansi-blue-fg">=</span>method<span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span>url<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     62</span> 
-<span class="ansi-green-intense-fg ansi-bold">     63</span> 
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ansi-cyan-fg">request</span><span class="ansi-blue-fg">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="ansi-green-intense-fg ansi-bold">    540</span>         }
-<span class="ansi-green-intense-fg ansi-bold">    541</span>         send_kwargs<span class="ansi-blue-fg">.</span>update<span class="ansi-blue-fg">(</span>settings<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 542</span><span class="ansi-red-fg">         </span>resp <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>send<span class="ansi-blue-fg">(</span>prep<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>send_kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    543</span> 
-<span class="ansi-green-intense-fg ansi-bold">    544</span>         <span class="ansi-green-fg">return</span> resp
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ansi-cyan-fg">send</span><span class="ansi-blue-fg">(self, request, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    653</span> 
-<span class="ansi-green-intense-fg ansi-bold">    654</span>         <span class="ansi-red-fg"># Send the request</span>
-<span class="ansi-green-fg">--&gt; 655</span><span class="ansi-red-fg">         </span>r <span class="ansi-blue-fg">=</span> adapter<span class="ansi-blue-fg">.</span>send<span class="ansi-blue-fg">(</span>request<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    656</span> 
-<span class="ansi-green-intense-fg ansi-bold">    657</span>         <span class="ansi-red-fg"># Total elapsed time of the request (approximately)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/requests/adapters.py</span> in <span class="ansi-cyan-fg">send</span><span class="ansi-blue-fg">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="ansi-green-intense-fg ansi-bold">    437</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    438</span>             <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> chunked<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 439</span><span class="ansi-red-fg">                 resp = conn.urlopen(
-</span><span class="ansi-green-intense-fg ansi-bold">    440</span>                     method<span class="ansi-blue-fg">=</span>request<span class="ansi-blue-fg">.</span>method<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">    441</span>                     url<span class="ansi-blue-fg">=</span>url<span class="ansi-blue-fg">,</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ansi-cyan-fg">urlopen</span><span class="ansi-blue-fg">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="ansi-green-intense-fg ansi-bold">    697</span> 
-<span class="ansi-green-intense-fg ansi-bold">    698</span>             <span class="ansi-red-fg"># Make the request on the httplib connection object.</span>
-<span class="ansi-green-fg">--&gt; 699</span><span class="ansi-red-fg">             httplib_response = self._make_request(
-</span><span class="ansi-green-intense-fg ansi-bold">    700</span>                 conn<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">    701</span>                 method<span class="ansi-blue-fg">,</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ansi-cyan-fg">_make_request</span><span class="ansi-blue-fg">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
-<span class="ansi-green-intense-fg ansi-bold">    443</span>                     <span class="ansi-red-fg"># Python 3 (including for exceptions like SystemExit).</span>
-<span class="ansi-green-intense-fg ansi-bold">    444</span>                     <span class="ansi-red-fg"># Otherwise it looks like a bug in the code.</span>
-<span class="ansi-green-fg">--&gt; 445</span><span class="ansi-red-fg">                     </span>six<span class="ansi-blue-fg">.</span>raise_from<span class="ansi-blue-fg">(</span>e<span class="ansi-blue-fg">,</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    446</span>         <span class="ansi-green-fg">except</span> <span class="ansi-blue-fg">(</span>SocketTimeout<span class="ansi-blue-fg">,</span> BaseSSLError<span class="ansi-blue-fg">,</span> SocketError<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> e<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    447</span>             self<span class="ansi-blue-fg">.</span>_raise_timeout<span class="ansi-blue-fg">(</span>err<span class="ansi-blue-fg">=</span>e<span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span>url<span class="ansi-blue-fg">,</span> timeout_value<span class="ansi-blue-fg">=</span>read_timeout<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/urllib3/packages/six.py</span> in <span class="ansi-cyan-fg">raise_from</span><span class="ansi-blue-fg">(value, from_value)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ansi-cyan-fg">_make_request</span><span class="ansi-blue-fg">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
-<span class="ansi-green-intense-fg ansi-bold">    438</span>                 <span class="ansi-red-fg"># Python 3</span>
-<span class="ansi-green-intense-fg ansi-bold">    439</span>                 <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 440</span><span class="ansi-red-fg">                     </span>httplib_response <span class="ansi-blue-fg">=</span> conn<span class="ansi-blue-fg">.</span>getresponse<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    441</span>                 <span class="ansi-green-fg">except</span> BaseException <span class="ansi-green-fg">as</span> e<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    442</span>                     <span class="ansi-red-fg"># Remove the TypeError from the exception chain in</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/http/client.py</span> in <span class="ansi-cyan-fg">getresponse</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1345</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1346</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1347</span><span class="ansi-red-fg">                 </span>response<span class="ansi-blue-fg">.</span>begin<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1348</span>             <span class="ansi-green-fg">except</span> ConnectionError<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1349</span>                 self<span class="ansi-blue-fg">.</span>close<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/http/client.py</span> in <span class="ansi-cyan-fg">begin</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    305</span>         <span class="ansi-red-fg"># read until we get a non-100 response</span>
-<span class="ansi-green-intense-fg ansi-bold">    306</span>         <span class="ansi-green-fg">while</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 307</span><span class="ansi-red-fg">             </span>version<span class="ansi-blue-fg">,</span> status<span class="ansi-blue-fg">,</span> reason <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_read_status<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    308</span>             <span class="ansi-green-fg">if</span> status <span class="ansi-blue-fg">!=</span> CONTINUE<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    309</span>                 <span class="ansi-green-fg">break</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/http/client.py</span> in <span class="ansi-cyan-fg">_read_status</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    266</span> 
-<span class="ansi-green-intense-fg ansi-bold">    267</span>     <span class="ansi-green-fg">def</span> _read_status<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 268</span><span class="ansi-red-fg">         </span>line <span class="ansi-blue-fg">=</span> str<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>fp<span class="ansi-blue-fg">.</span>readline<span class="ansi-blue-fg">(</span>_MAXLINE <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;iso-8859-1&#34;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    269</span>         <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">&gt;</span> _MAXLINE<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    270</span>             <span class="ansi-green-fg">raise</span> LineTooLong<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;status line&#34;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/socket.py</span> in <span class="ansi-cyan-fg">readinto</span><span class="ansi-blue-fg">(self, b)</span>
-<span class="ansi-green-intense-fg ansi-bold">    667</span>         <span class="ansi-green-fg">while</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    668</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 669</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_sock<span class="ansi-blue-fg">.</span>recv_into<span class="ansi-blue-fg">(</span>b<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    670</span>             <span class="ansi-green-fg">except</span> timeout<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    671</span>                 self<span class="ansi-blue-fg">.</span>_timeout_occurred <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/ssl.py</span> in <span class="ansi-cyan-fg">recv_into</span><span class="ansi-blue-fg">(self, buffer, nbytes, flags)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1239</span>                   <span class="ansi-blue-fg">&#34;non-zero flags not allowed in calls to recv_into() on %s&#34;</span> <span class="ansi-blue-fg">%</span>
-<span class="ansi-green-intense-fg ansi-bold">   1240</span>                   self.__class__)
-<span class="ansi-green-fg">-&gt; 1241</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>read<span class="ansi-blue-fg">(</span>nbytes<span class="ansi-blue-fg">,</span> buffer<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1242</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1243</span>             <span class="ansi-green-fg">return</span> super<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>recv_into<span class="ansi-blue-fg">(</span>buffer<span class="ansi-blue-fg">,</span> nbytes<span class="ansi-blue-fg">,</span> flags<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/opt/miniconda3/envs/socemb/lib/python3.8/ssl.py</span> in <span class="ansi-cyan-fg">read</span><span class="ansi-blue-fg">(self, len, buffer)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1097</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1098</span>             <span class="ansi-green-fg">if</span> buffer <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1099</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_sslobj<span class="ansi-blue-fg">.</span>read<span class="ansi-blue-fg">(</span>len<span class="ansi-blue-fg">,</span> buffer<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1100</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1101</span>                 <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_sslobj<span class="ansi-blue-fg">.</span>read<span class="ansi-blue-fg">(</span>len<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+</pre>
 </div>
 </div>
 
@@ -369,7 +238,7 @@ nb_path: "00_processing.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comm_subr_to_csv</span><span class="p">(</span><span class="n">comments</span><span class="p">,</span> <span class="s1">&#39;politics&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comm_subr_to_csv</span><span class="p">(</span><span class="n">comments</span><span class="p">,</span> <span class="n">SUBREDDIT</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -757,6 +626,99 @@ Wall time: 41.6 s
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Measure-semantic-distances">Measure semantic distances<a class="anchor-link" href="#Measure-semantic-distances"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">COMMS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;askaconservative&#39;</span><span class="p">,</span> <span class="s1">&#39;politics&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comm</span> <span class="o">=</span> <span class="s1">&#39;askaconservative&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2013</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LEX</span> <span class="o">=</span> <span class="s1">&#39;trump&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+for comm in COMMS:
+    for year in YEARS:
+        model = 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Clean-data">Clean data<a class="anchor-link" href="#Clean-data"> </a></h2>

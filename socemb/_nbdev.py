@@ -28,7 +28,9 @@ index = {"query_lexeme": "02_collect-data.ipynb",
          "detect_short_doc": "07_type_emb.ipynb",
          "clean_docs": "07_type_emb.ipynb",
          "Corpus": "07_type_emb.ipynb",
-         "train_emb": "07_type_emb.ipynb"}
+         "train_emb": "07_type_emb.ipynb",
+         "load_model": "07_type_emb.ipynb",
+         "get_vec_from_model": "07_type_emb.ipynb"}
 
 modules = ["collect_data.py",
            "read_data.py",
