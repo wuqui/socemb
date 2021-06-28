@@ -4,9 +4,11 @@ __all__ = ['conv_to_lowerc', 'rm_punct', 'tokenize', 'detect_short_doc', 'clean_
            'load_model', 'get_vec_from_model']
 
 # Cell
-from gensim.models import Word2Vec
-import pandas as pd
 import re
+import numpy as np
+import pandas as pd
+
+from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 from scipy.spatial.distance import cosine
 
