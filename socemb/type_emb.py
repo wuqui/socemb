@@ -65,7 +65,7 @@ def train_emb(corpus, MIN_COUNT=5, SIZE=300, WORKERS=8, WINDOW=3):
 # Cell
 def load_model(SUBREDDIT: str, YEAR: int, LIMIT: int = 100_000):
     """Load word2vec model from disk."""
-    model = KeyedVectors.load(f'data/vecs/{SUBREDDIT}_{YEAR}_{LIMIT}.wv', mmap='r')
+    model = KeyedVectors.load(f'data/vecs/{SUBREDDIT}_{YEAR}_{LIMIT}.kv', mmap='r')
     return model
 
 # Cell

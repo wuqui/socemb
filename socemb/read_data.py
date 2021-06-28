@@ -7,6 +7,7 @@ __all__ = ['get_fpaths_lex', 'get_fpath_subr_yr', 'get_fpaths_subr_yrs', 'get_fp
 from glob import glob
 import pandas as pd
 from pathlib import Path
+import os
 
 # Cell
 def get_fpaths_lex(LEX, CORPUS_DIR='data/', source='local', bucket_name='socemb'):
@@ -20,7 +21,7 @@ def get_fpaths_lex(LEX, CORPUS_DIR='data/', source='local', bucket_name='socemb'
     return fpaths
 
 # Cell
-def get_fpath_subr_yr(SUBREDDIT, LIMIT, YEAR):
+def get_fpath_subr_yr(SUBREDDIT, YEAR, LIMIT):
     return f'data/subreddit/{SUBREDDIT}/{LIMIT}_{YEAR}.csv'
 
 # Cell
