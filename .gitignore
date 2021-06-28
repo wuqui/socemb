@@ -140,4 +140,5 @@ checklink/cookies.txt
 .gitconfig
 
 /data/
+!/data/distances.csv
 /socemb.org
