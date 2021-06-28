@@ -1,0 +1,25 @@
+#+TITLE: SocEmb
+#+options: ^:nil
+
+* Google Drive repo
+https://drive.google.com/drive/u/0/folders/1HS_lLADxZt_YqVJetowc2_KLIXYGRlzN
+* Plan
+** corpus: political sphere on Reddit
+
+** measure diachronic semantic variation
+- to get sample of semantic change / neologisms
+- across all communities
+
+** measure social semantic variation at late stage
+- distance of semantic representations (=vectors=) for each of the candidates (=sample=)
+
+** measure social distances of communities
+- community labels from =userleansbot=
+- social embeddings [[parencite:Martin2017DissectingTrump]]
+
+** analyse correlation between social distance and social semantic variation
+
+** analyse temporal dynamics
+*** semantic variation: increasing polarisation?
+*** social distance: increasing polarisation?
+*** does one drive the other?
